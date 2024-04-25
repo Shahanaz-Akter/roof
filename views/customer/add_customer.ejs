@@ -53,7 +53,7 @@
                             <h4 class="text-black font-bold mb-3">Add Customer</h4>
 
                             <div style="color: rgb(97 97 97); margin-right: 0.5rem">
-                                <span>Supplier</span>
+                                <span>Customer</span>
                                 <span>></span>
                                 <span>Add Customer</span>
                             </div>
@@ -76,20 +76,8 @@
 
                                     <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-4">
                                         <label for="dob" class="form-label">Date of Birth</label>
-                                        <input class="form-control custom-date-input" id="dob" type="date" name="dob " placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}">
+                                        <input class="form-control custom-date-input" id="dob" type="date" name="birth" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}">
                                     </div>
-                                    <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
-                                        <label for="customer_group" class="form-label">Customer Group</label>
-                                        <select class="form-control" data-toggle="select2" data-width="100%" name="customer_group" style="background: #FCFCFC!important;">
-                                            <option>Select</option>
-                                            <optgroup label="">
-                                                <option value="general">General</option>
-                                                <option value="walk_in">Walk in</option>
-                                                <option value="local">Local</option>
-                                                <option value="foreign">Foreign</option>
-                                            </optgroup>
-                                        </select>
-                                    </div> -->
 
                                     <style>
                                         .select2-container--default .select2-selection--single {
@@ -112,15 +100,11 @@
                                         <label for="email" class="form-label">Email</label>
                                         <input type="text" id="email" class="form-control" placeholder="xyx@gmail.com" name="email" style="background: #FCFCFC!important;">
                                     </div>
+
                                     <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
                                         <label for="country" class="form-label">Country</label>
                                         <input type="text" id="country" class="form-control" placeholder="Dhaka" name="country" style="background: #FCFCFC!important;">
                                     </div>
-
-                                    <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
-                                        <label for="city" class="form-label">City</label>
-                                        <input type="text" id="city" class="form-control" placeholder="Dhaka" name="city" style="background: #FCFCFC!important;">
-                                    </div> -->
 
 
                                     <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
@@ -137,13 +121,15 @@
                                         <input class="form-control custom-date-input" id="date" type="date" name="date" placeholder="MM/DD/YYYY" pattern="\d{2}/\d{2}/\d{4}" min="">
                                     </div>
 
-                                    <!-- <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
-                                <label class="form-label" for="reward_point">Reward Point</label>
-                                <input data-toggle="touchspin" type="number" name="reward_point" placeholder="4.470" style="background: #FCFCFC!important;">
-                            </div> -->
+
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="text" id="password " class="form-control" placeholder="*****" name="password" style="background: #FCFCFC!important;" required>
+                                    </div>
 
                                     <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                                        <button type="submit" class="btn btn-lg btn-primary">Create Now </button>
+                                        <button type="submit" class="btn btn-md btn-dark">Create Customer</button>
                                     </div>
 
                                 </div>

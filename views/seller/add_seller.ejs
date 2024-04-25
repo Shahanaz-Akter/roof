@@ -10,10 +10,11 @@
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- App favicon colorVariant-->
+
+    <!-- App favicon -->
     <link rel="shortcut icon" href="/assets/images/favicon.ico">
 
-    <!-- Plugins Css-->
+    <!-- Plugins css -->
     <link href="/assets/libs/mohithg-switchery/switchery.min.css" rel="stylesheet" type="text/css" />
     <link href="/assets/libs/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
     <link href="/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
@@ -26,921 +27,6 @@
     <!-- icons -->
     <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-    <!-- add_products external css -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-
-    <style id="omarInventory">
-        #productInformation div h3,
-        #ProductVariant div h3,
-        .newVariantTable div h3,
-        #table_content_container div h3 {
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
-
-
-
-        .form-control {
-            color: #242945;
-            /* background-color: #EBEBEB; */
-            border-radius: 5px;
-            font-size: 14px;
-            padding: 10px 8px;
-            width: 100%;
-            -webkit-transition: all ease 0.5s;
-            transition: all ease 0.5s;
-            margin-top: 7px
-        }
-
-        .colorVariantBox .colorInputUL {
-            display: flex;
-            flex-wrap: wrap;
-            padding: 1px;
-            margin: 10px 0;
-            border-radius: 5px;
-            background-color: #EBEBEB;
-        }
-
-        .colorVariantBox .colorInputUL input {
-            flex: 1;
-            padding: 5px;
-            border: none;
-            outline: none;
-            font-size: 16px;
-            border-radius: 5px;
-            padding: 8px;
-            /* background-color: #EBEBEB; */
-        }
-
-        .colorVariantBox .colorInputUL li {
-            color: #333;
-            margin: 2px 2px;
-            list-style: none;
-            border-radius: 5px;
-            background: white;
-            padding: 2px 5px 2px 5px;
-            border: 1px solid #e3e1e1;
-        }
-
-        .colorVariantBox .colorInputUL li i {
-            color: #407BFF;
-            font-size: 12px;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .populateBtn span {
-            background-color: #3D3D3D;
-
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
-
-        .populateBtn span:hover {
-            background-color: goldenrod;
-            color: black;
-            padding: 10px 15px;
-        }
-
-        .newVariantTable p {
-            font-size: 16px
-                /* font-family: "Gill Sans", sans-serif; */
-        }
-
-        .tableHead {
-            background-color: #3D3D3D;
-            color: white;
-            text-align: center
-        }
-
-        .tableHead tr th {
-            box-sizing: border-box;
-            box-shadow: 0 1px 1px 1px white;
-        }
-
-        .tableBody {
-            text-align: center;
-            background-color: white;
-            color: #3D3D3D;
-            font-weight: 700;
-        }
-
-        .tableBody td {
-            padding: 20px 0;
-            box-sizing: border-box;
-            box-shadow: 0 -1px 1px 1px #c7c7c7
-        }
-
-        .tableBody td .myInput {
-            color: #3D3D3D;
-            font-weight: 700;
-            text-align: center;
-            border: none;
-            outline: none;
-            width: 100%;
-        }
-
-        #table_content_container label {
-            font-weight: 700;
-        }
-
-        .table_content-Add span {
-            font-size: 20px;
-            font-weight: 700;
-            color: rgb(14, 168, 14);
-        }
-
-        .table_content-delete .delete-content-icon,
-        .table_content-Add .add-content-icon {
-            background-color: white;
-        }
-
-        .table_content-Add .add-content-icon:hover {
-            background-color: rgba(148, 245, 148, 0.301);
-        }
-
-        .table_content-delete .delete-content-icon:hover {
-            background-color: rgba(238, 82, 82, 0.356)
-        }
-
-        .productName input:focus {
-            background-color: #EBEBEB;
-        }
-
-        #ddssrr {
-            width: 100%;
-        }
-    </style>
-
-
-    <style>
-        #addProduct {
-            border-radius: 10px;
-            margin-top: 20px;
-            /* background-color: green; */
-        }
-
-        #addProduct .topTheme {
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-            /* background-image: url('https://th.bing.com/th/id/R.a0b16c2163849101d6663da00083a134?rik=guLwZdbm3I0krQ&pid=ImgRaw&r=0');  */
-            background-repeat: no-repeat;
-            background-size: cover;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 70px 40px;
-        }
-
-        #cancel {
-            border: none;
-            border: 2px solid white;
-            color: white;
-            font-weight: 80px;
-            background-color: transparent;
-            padding: 5px 10px;
-            border-radius: 20px;
-        }
-
-        #save {
-            border: none;
-            color: blue;
-            font-weight: 80px;
-            background-color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-        }
-
-        .mainImage {
-            position: relative;
-            width: 100%;
-            margin: 50px auto;
-        }
-
-        .mainImage .avatar-edit {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .mainImage .avatar-edit input {
-            display: none;
-        }
-
-        .mainImage .avatar-edit input+label {
-            display: inline-block;
-            width: 100%;
-            height: 100%;
-            margin-bottom: 0;
-            background: transparent;
-            border: 1px solid transparent;
-            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-            cursor: pointer;
-            font-weight: normal;
-            transition: all 0.2s ease-in-out;
-        }
-
-        .mainImage .avatar-edit input+label:hover {
-            background: rgba(241, 241, 241, 0.253);
-            border-color: #d6d6d6;
-            border-radius: 5px;
-        }
-
-        .mainImage .avatar-edit input+label:after {
-            content: "+";
-            font-weight: 700;
-            font-size: 40px;
-            width: 40px;
-            height: 40px;
-            color: blue;
-            position: absolute;
-            top: 40%;
-            left: 50px;
-            right: 50px;
-            text-align: center;
-            margin: auto;
-        }
-
-        .mainImage .image-preview {
-            width: 100%;
-            height: 250px;
-            position: relative;
-            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-            border: 5px solid gray;
-            border-radius: 5px;
-        }
-
-        .mainImage .image-preview>div {
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            border: x;
-        }
-
-
-        .image-2nd {
-            position: relative;
-            width: 100%;
-            height: 70px;
-            margin: 50px auto;
-            border: 1px dashed #8723c1;
-        }
-
-        .image-2nd .avatar-edit {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .image-2nd .avatar-edit input {
-            display: none;
-        }
-
-        .image-2nd .avatar-edit input+label {
-            display: inline-block;
-            width: 100%;
-            height: 100%;
-            margin-bottom: 0;
-            background: #8723c152;
-            border: 1px solid transparent;
-            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-            cursor: pointer;
-            font-weight: normal;
-            transition: all 0.2s ease-in-out;
-        }
-
-        .image-2nd .avatar-edit input+label:hover {
-            background: #8723c1a9;
-            border-color: #d6d6d6;
-        }
-
-        .image-2nd .avatar-edit input+label:after {
-            content: "+";
-            font-weight: 700;
-            font-size: 40px;
-            width: 40px;
-            height: 40px;
-            color: #e9078c;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            text-align: center;
-            margin: auto;
-        }
-
-        .image-2nd .image-preview {
-            width: 100%;
-            height: 70px;
-            position: relative;
-            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-        }
-
-        .image-2nd .image-preview>div {
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            border: x;
-        }
-
-
-
-        .create-preview-div {
-            position: relative;
-            padding-left: 5px;
-            padding-right: 5px;
-        }
-
-        ._2ndImgpreview {
-            width: 100%;
-            height: 70px;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            z-index: 4;
-            border: 1px dashed blue;
-        }
-
-        .create-preview-div .delete-2nd-Img {
-            position: absolute;
-            width: 92%;
-            height: 70px;
-            z-index: 3;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #65b0e2;
-            font-size: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            top: 0;
-        }
-
-        .create-preview-div .delete-2nd-Img:hover {
-            /* background-color: #d81212a6; */
-            background-color: #cfe6f54b;
-        }
-
-
-
-        .add-product-detail {
-            background-color: #fff;
-            /* background-color: #7f26c6; */
-            /* padding: 20px 20px; */
-            /* padding: 52px 20px 30px 20px; */
-            padding: 30px 20px 52px 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .category h3,
-        .productName h3,
-        .Description h3,
-        .aProductSeo h2 {
-            font-size: 18px !important;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            color: #000000;
-            position: relative;
-            margin-bottom: 20px;
-            /* text-decoration: underline; */
-        }
-
-        .productName h3::before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 135px;
-            height: 1px;
-            background-color: #000000;
-            /* padding-bottom: 10px; */
-        }
-
-        .category h3::before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
-            height: 1px;
-            background-color: #000000;
-        }
-
-        .aProductSeo h3::before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 160px;
-            height: 1px;
-            background-color: #000000;
-        }
-
-        .advanced h3::before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 90px;
-            height: 1px;
-            background-color: #000000;
-        }
-
-
-        .category .form-control-product,
-        .productName .form-control-product,
-        .Description .form-control-product {
-            /* height: 50px; */
-            /* color: #242945;
-   border: 1px solid #7a7a7a;
-   background-color: #f6f6f6;
-   border-radius: 5px;
-   font-size: 14px;
-   padding: 8px 15px;
-   width: 100%;
-   -webkit-transition: all ease 0.5s;
-   transition: all ease 0.5s; */
-        }
-
-        /* .populateBtn span{
-   background-color: #8723c14d;
-   color: #8723c1;
-   padding: 10px 15px;
-   border-radius: 5px;
- }
- .populateBtn span:hover{
-   background-color: #8723c1;
-   color: #fff;
-   padding: 10px 15px;
- } */
-
-        .data-dropdown .btn-secondary {
-            background-color: transparent;
-            padding: 0;
-            color: #67748e;
-            border: none;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        .data-dropdown .btn-secondary:focus {
-            /* -webkit-box-shadow: none;
-           box-shadow: none; */
-        }
-
-        .data-dropdown .btn-secondary::after {
-            /* display: none; */
-        }
-
-        .data-dropdown .dropdown-menu {
-            border: none;
-            background-color: #ffffff;
-            -webkit-box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
-            box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
-            border-radius: 10px;
-        }
-
-        .data-dropdown .dropdown-menu li a {
-            font-size: 14px;
-            color: #242945;
-        }
-
-        .data-dropdown .dropdown-menu li a:hover {
-            /* background-color: transparent;
-   color: #7f26c6; */
-        }
-
-        .data-dropdown .dropdown-menu li a i {
-            float: right;
-            color: #7f26c6;
-        }
-
-        .data-dropdown .dropdown-menu li a i.ri-delete-bin-6-line {
-            color: #ff0000;
-        }
-
-        .delete-table-data:hover {
-            cursor: pointer;
-        }
-
-        .table_content-delete span:hover {
-            color: #dc3545;
-        }
-
-        /* .table_content-Add span{
-   font-size: 20px;
-   font-weight: 700;
-   color: rgb(14, 168, 14);
- }
- .table_content-Add span:hover{
-   color: rgb(4, 204, 4);
- } */
-
-        /* singel product css  */
-
-
-        .main-img-container {
-            height: 100%;
-            width: 100%;
-            position: relative;
-        }
-
-        .secondary-img-container {
-
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .s-i-c-2 label {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 70px;
-            width: 70px;
-            /* background-color: rgb(195, 212, 223); */
-            background-color: #3D3D3D;
-
-        }
-
-        .s-i-c-2 label i {
-            color: white;
-            font-size: 50px;
-        }
-
-        .secondary-img-secondary_img_container_parent label {
-            height: 100%;
-            width: 100%;
-            background-color: rgba(1, 1, 1, 0.2);
-
-        }
-
-        .main-img-container label i {
-            font-size: 30px;
-            ;
-        }
-
-        .secondary-img-container label i {
-            font-size: 30px;
-            ;
-        }
-
-
-
-        .aProductImage {
-            padding: 0 0px 15px 15px;
-        }
-
-        .create-a-preview-div {
-            position: relative;
-            padding: 5px;
-        }
-
-        .a-product-img {
-            position: relative;
-            width: 100%;
-            height: 120px;
-            margin: 50px auto;
-            border: 1px dashed #8723c1;
-        }
-
-        .a-product-img .avatar-edit {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .a-product-img .avatar-edit input {
-            display: none;
-        }
-
-        .a-product-img .avatar-edit input+label {
-            display: inline-block;
-            width: 200px;
-            height: 200px;
-            margin-bottom: 0;
-            background: #8723c152;
-            border: 1px solid transparent;
-            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-            cursor: pointer;
-            font-weight: normal;
-            transition: all 0.2s ease-in-out;
-        }
-
-        .a-product-img .avatar-edit input+label:hover {
-            background: #8723c1a9;
-            border-color: #d6d6d6;
-        }
-
-        .a-product-img .avatar-edit input+label:after {
-            /* content: "+"; */
-            font-weight: 700;
-            font-size: 40px;
-            width: 40px;
-            height: 40px;
-            color: #e9078c;
-            position: absolute;
-            top: 30px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            margin: auto;
-        }
-
-        ._aImgpreview {
-            width: 100%;
-            height: 120px;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            z-index: 4;
-            border: 1px dashed blue;
-        }
-
-        .create-a-preview-div .delete-a-Img {
-            position: absolute;
-            width: 92%;
-            height: 120px;
-            z-index: 3;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #65b0e2;
-            font-size: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            top: 0;
-        }
-
-        .create-a-preview-div .delete-a-Img:hover {
-            background-color: #cfe6f54b;
-        }
-
-        /* upload product video  */
-        .product_video {
-            position: relative;
-            width: 100%;
-            height: 150px;
-            margin: 50px auto;
-            border: 1px dashed #8723c1;
-            border-radius: 5px;
-        }
-
-        .product_video .avatar-edit {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .product_video .avatar-edit input {
-            display: none;
-        }
-
-        .product_video .avatar-edit input+label {
-            display: inline-block;
-            width: 100%;
-            height: 100%;
-            margin-bottom: 0;
-            background: #8723c152;
-            border: 1px solid transparent;
-            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-            cursor: pointer;
-            font-weight: normal;
-            transition: all 0.2s ease-in-out;
-        }
-
-        .product_video .avatar-edit input+label:hover {
-            background: #8723c1a9;
-            border-color: #d6d6d6;
-        }
-
-        .product_video .avatar-edit input+label:after {
-            font-weight: 700;
-            font-size: 40px;
-            width: 40px;
-            height: 40px;
-            color: #e9078c;
-            position: absolute;
-            top: 30px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            margin: auto;
-        }
-
-        .product_video .avatar-edit input+label i,
-        .a-product-img .avatar-edit input+label i {
-            font-weight: 700;
-            font-size: 30px;
-            color: #e9078c;
-            position: absolute;
-            color: red;
-            top: 35%;
-            left: 0;
-            right: 0;
-            text-align: center;
-            margin: auto;
-        }
-
-        .aVideoPreview {
-            height: 150px;
-            z-index: 4;
-            padding-left: 0px;
-            padding-right: 5px;
-        }
-
-        .video_preview video {
-            border: 1px solid tomato;
-            height: 150px;
-            width: 100%;
-            border: 5px;
-        }
-
-        .onSaleBtn {
-            background-color: #d2d2d2;
-            width: 45px;
-            height: 25px;
-            border-radius: 200px;
-            cursor: pointer;
-            position: relative;
-            transition: 0.2s;
-        }
-
-        .onSaleBtn::before {
-            position: absolute;
-            content: '';
-            background-color: #fff;
-            width: 15px;
-            height: 15px;
-            border-radius: 200px;
-            margin: 5px;
-            transition: 0.2s;
-        }
-
-        .onSaleContainer {
-            display: flex;
-        }
-
-        .onSaleContainer div input:checked+.onSaleBtn {
-            background-color: #20096d;
-        }
-
-        .onSaleContainer div input:checked+.onSaleBtn::before {
-            transform: translateX(20px);
-        }
-
-        .onSaleContainer div input {
-            display: none;
-        }
-
-        .setInputIcon i {
-            position: absolute;
-            font-size: 25px;
-            right: 5px;
-            background-color: #f6f6f6;
-            border: 10px;
-            height: 30px;
-            top: 2px;
-        }
-
-        #AdditionalSection {
-            cursor: pointer;
-            color: blue;
-        }
-
-        /* Styling for the dropdown menu items */
-        .content_dropdown-menu {
-            position: absolute;
-            top: 110%;
-            left: 0;
-            z-index: 1;
-            background-color: #f9f9f9;
-            border: 2px solid black;
-            border-radius: 5px;
-            width: 380px;
-            margin: 0 12px;
-        }
-
-        .content_dropdown-item {
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .content_dropdown-item:hover {
-            background-color: rgb(221, 219, 219);
-        }
-
-        .colorVariantBox {
-            /* border: 1px solid tomato; */
-        }
-
-        .colorVariantBox label {
-            font-weight: 600;
-        }
-
-
-
-
-        /* .colorVariantBox .colorInputUL{
-   display: flex;
-   flex-wrap: wrap;
-   padding: 10px 5px;
-   margin: 12px 0;
-   border-radius: 5px;
-   background-color: #f6f6f6;
- } */
-        /* .colorVariantBox .colorInputUL  li{
-   color: #333;
-   margin: 2px 2px;
-   list-style: none;
-   border-radius: 5px;
-   background: #F2F2F2;
-   padding: 3px 3px 3px 3px;
-   border: 1px solid #e3e1e1;
- } */
-        /* .colorVariantBox .colorInputUL li i{
-   height: 20px;
-   width: 20px;
-   color: #808080;
-   font-size: 12px;
-   cursor: pointer;
-   border-radius: 50%;
-   background: #dfdfdf;
-   justify-content: center;
-   padding: 5px;
- } */
-        /* .colorVariantBox .colorInputUL input{
-   flex: 1;
-   padding: 5px;
-   border: none;
-   outline: none;
-   font-size: 16px;
-   background-color: #f6f6f6;
- } */
-
-        /* .colorVariantBox #colorVariant{
-   width: 100%;
-   padding: 10px;
-   border: 1px solid rgb(190, 189, 189);
-   border-radius: 5px;
- }
- .colorVariantBox #colorVariant:focus{
-   outline: none;
-   border: 1px solid black;
- } */
-        .colorVariantBox .removeColorVariang {
-            font-weight: 600;
-            position: absolute;
-            background-color: white;
-            top: 11px;
-            right: 10px;
-        }
-
-        .dropdownBox {
-            /* border: 1px solid tomato; */
-            border-radius: 5px;
-            background-color: rgb(250, 250, 250);
-            width: 100%;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            /* background:white; */
-            z-index: 1;
-            box-sizing: border-box;
-            box-shadow: 2px 2px 5px rgba(7, 7, 7, 0.616);
-        }
-
-        .dropdownBox ul {
-            list-style: none;
-            padding: 0;
-            border-radius: 5px;
-            margin-bottom: 0;
-        }
-
-        .dropdownBox ul li {
-            padding: 3px 0 3px 10px;
-        }
-
-        .dropdownBox ul li:hover {
-            background: rgb(226, 226, 226);
-            /* background: rgb(173, 48, 48); */
-        }
-    </style>
-
 </head>
 
 <!-- body start -->
@@ -952,204 +38,122 @@
 
         <!-- Top bar Start -->
         <%- include('../layouts/topbar.ejs') -%>
-
             <!-- end Topbar -->
 
             <!-- Left Sidebar Start ========== -->
             <%- include('../layouts/left_sidebar.ejs') -%>
-
                 <!-- Left Sidebar End -->
 
                 <!-- Start Page Content here -->
                 <div class="content-page mt-5" style="background: #F9F9F9;">
                     <div class="content">
-                        <form action="/product/post_add_product" method="post" enctype="multipart/form-data">
 
-                            <!-- Start Content-->
-                            <div class="bg-white p-3 mb-2" style="border-radius: 5px;">
+                        <div class="bg-white p-3 mb-2">
+
+                            <h4 class="text-black font-bold mb-3">Add Seller</h4>
+
+                            <div style="color: rgb(97 97 97); margin-right: 0.5rem">
+                                <span>Seller</span>
+                                <span>></span>
+                                <span>Add Seller</span>
+                            </div>
+                        </div>
+
+                        <!-- Start Content-->
+                        <div class="container-fluid card p-4">
+
+                            <h3 class="mb-3">Create Seller</h3>
+
+                            <form action="/seller/post_seller" method="post" enctype="multipart/form-data">
 
                                 <div class="row">
+                                    <!-- seller_picture -->
 
-                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
-                                        <h4 class="text-black font-bold mb-3">Add Seller</h4>
-
-                                        <div style="color: rgb(97 97 97); margin-right: 0.5rem">
-                                            <span>Seller</span>
-                                            <span>></span>
-                                            <span>Seller List </span>
+                                    <%if(err){%>
+                                        <div class="border bg-light text-danger text-center p-2">
+                                            <%=err%>
                                         </div>
-                                    </div>
-                                    <div class="col-12 col-md-2 col-lg-2 col-xl-2 mb-2">
-                                    </div>
+                                        <%}%>
 
 
+                                            <div class="col-12 mb-3 text-center">
+                                                <div class="main-img-container mt-2">
+                                                    <!-- <p>*All Image size should be 300/300.</p> -->
+                                                    <img class="" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" style="width:250px;border-radius:5px;"
+                                                        id="main-img-preview">
+                                                    <br>
+                                                    <label for="mainImg" class="btn btn-dark mt-2">Seller Picture</label>
+                                                    <input type="file" class="d-none" id="mainImg" onchange="seller_image_changed(this,null)" name="seller_picture">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                                <label for="seller_user_name" class="form-label">Seller Name</label>
+                                                <input class="form-control" id="seller_user_name" type="text" name="seller_user_name" placeholder="Seller Name">
+                                            </div>
+                                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                                <label for="phone" class="form-label">Phone</label>
+                                                <input class="form-control" id="phone" type="text" name="phone" placeholder="01*********" required>
+                                            </div>
+                                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                                <label for="store_name" class="form-label">Store Name</label>
+                                                <input class="form-control" id="store_name" type="text" name="store_name" placeholder="Store Name">
+                                            </div>
+                                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                                <label for="business_type" class="form-label">Business Type</label>
+                                                <input class="form-control" id="business_type" type="text" name="business_type" placeholder="Business Type">
+                                            </div>
+
+                                            <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                                <label for="address" class="form-label">Address</label>
+                                                <input class="form-control" id="address" type="text" name="address" placeholder="Address">
+                                            </div>
+
+                                            <style>
+                                                .select2-container--default .select2-selection--single {
+                                                    background: #FCFCFC !important;
+                                                    color: #444 !important;
+                                                }
+
+                                                .form-control {
+                                                    background: #FCFCFC !important;
+                                                    color: #444 !important;
+                                                }
+                                            </style>
+
+                                            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                                <button type="submit" class="btn btn-md btn-dark">Create Seller</button>
+                                            </div>
 
                                 </div>
 
-                                <!-- Start Content-->
-                                <div class="container-fluid card" style="padding: 20px;">
+                            </form>
 
-                                    <!-- new Add product code Start  -->
-                                    <div class="row">
+                        </div>
+                        <!-- container-fluid -->
 
-                                        <div class="col-12 col-md-12 col-lg-12 col-xl-12 mb-2 p-3 border text-center">
-                                            <div class="main-img-container mt-2">
-                                                <!-- <p>*All Image size should be 300/300.</p> -->
-                                                <img class="" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Not Available" style="width:180px;border-radius:5px;"
-                                                    id="main-img-preview1">
-                                                <br>
-                                                <label for="mainImg1" class="btn btn-dark mt-2">Seller Image</label>
-                                                <input type="file" class="d-none" id="mainImg1" onchange="main_image_changed1(this,null)" name="category_image">
-                                            </div>
-                                        </div>
+                    </div> <!-- content -->
 
-
-                                        <div class="col-12 col-md-12 col-lg-12 col-xl-12 row ">
-
-                                            <div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-2">
-                                                <div class="form-group  position-relative" style="background-color: white; border-radius: 5px; padding:1px">
-                                                    <label class="form-label" style="">Phone Number</label>
-                                                    <input type="text" class="form-control" placeholder="017********" value="" name="seller_phone" id="seller_phone">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-2">
-                                                <div class="form-group  position-relative" style="background-color: white; border-radius: 5px; padding:1px">
-                                                    <label class="form-label" style="">Store Name</label>
-                                                    <input type="text" class="form-control" value="" name="store_name" id="
-                                                store_name">
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-2">
-                                                <div class="form-group  position-relative" style="background-color: white; border-radius: 5px; padding:1px">
-                                                    <label class="form-label" style="">User Name</label>
-                                                    <input type="text" class="form-control" value="" name="user_name" placeholder="User Name" id="
-                                                                                        user_name">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-2">
-                                                <div class="form-group" style="background-color: white; border-radius: 5px; padding:10px">
-                                                    <label>Address</label>
-                                                    <input type="text" class="form-control" placeholder="Address" id="address" name="address" onkeypress="return event.keyCode != 13;">
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12 col-md-6 col-lg-4 col-xl-4">
-                                                <div class="form-group  position-relative" style="background-color: white; border-radius: 5px; padding:10px">
-                                                    <label class="" style="">Product Category</label>
-                                                    <div class="position-relative single-contact-info productName" style="margin-top: 7px">
-                                                        <input type="text" class="form-control " placeholder="Select Type" onclick="showContentDropdown(1001, null)" autocomplete="off" id="contentsTitleInput_1001" name="product_category" onkeypress="return event.keyCode != 13;">
-                                                        <div class="content_dropdown-menu d-none w-100 border-0 dropdownMenu_ dropdownBox" id="dropdownMenu_1001" style="margin-left: 0px;box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);border:1px solid gray;">
-                                                            <!-- <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Trending</div> -->
-                                                            <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Fashion</div>
-                                                            <div class="content_dropdown-item p-2" onclick="selectOption(this, null)">Beauty</div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div id="table_content_container" class="newVariantTable TableOfContents" style="">
-                                        <div class="row mb-2">
-                                            <div class="col-12 col-md-12 col-xl-6 col-lg-6">
-                                                <div class="form-group" style="background-color: white; border-radius: 0px; padding:10px">
-                                                    <label>Description</label>
-                                                    <textarea name="description" class="form-control" cols="10" rows="7" value=""></textarea>
-                                                </div>
-                                            </div>
-                                            <!-- <div class="col-md-6 col-xl-6 col-sm-12 mt-sm-3 mt-md-0 mt-3">
-                                                <div class="form-group" style="background-color: white; border-radius :5px; padding:20px">
-                                                    <label>Additional Information</label>
-                                                    <textarea name="additional_information" class="form-control" cols="40" rows="7" value="Additional Information..........."></textarea>
-                                                </div>
-                                            </div> -->
-                                        </div>
-
-
-                                    </div>
-
-                                    <div class="ms-3" style="display: flex; justify-content: left;">
-                                        <button type="submit" class="btn btn-dark me-3 border-0" style="background-color:#0E5DE7; padding: 10px 3em; font-weight: 600;">
-                                            Upload
-                                        </button>
-
-                                        <button class="btn btn-info border-0" style="padding: 10px 3em; font-weight: 600;">
-                                            Cancel
-                                        </button>
-                                    </div>
-
-
-
-                                    <!-- new Add product code End  -->
-
-
-                                    <div class="row d-none">
-
-                                        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
-                                            <label for="warehouse" class="form-label">Select Warehouse</label>
-                                            <select class="form-control" data-toggle="select2" data-width="100%" name="warehouse" style="background: #FCFCFC!important;">
-                                                <option>Warehouse</option>
-                                                <optgroup label="">
-                                                    <option value="united_state">United State</option>
-                                                    <option value="canada">Canada</option>
-                                                    <option value="maxico">Maxico</option>
-                                                    <option value="france">France</option>
-                                                    <option value="germany">Germany</option>
-                                                </optgroup>
-                                            </select>
-                                        </div>
-
-
-
-                                        <!-- <style>
-                                        .select2-container--default .select2-selection--single .select2-selection__rendered {
-                                            background: #FCFCFC !important;
-                                            color: #444;
-
-                                        }
-                                    </styl> -->
-
-
-                                        <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
-                                            <div class="mb-3">
-                                                <label class="form-label">Amount</label>
-                                                <input data-toggle="touchspin" type="text" name="amount" placeholder="4.470" style="background: #FCFCFC!important;">
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                    <!-- container-fluid -->
-
-                        </form>
-
-
-                    </div>
-                    <!-- content -->
-
+                    <!-- Footer Start -->
                     <%- include('../layouts/footer.ejs') -%>
+                        <!-- end Footer -->
 
                 </div>
                 <!-- End Page content -->
+
+
     </div>
     <!-- END wrapper -->
 
     <!-- Right Sidebar -->
     <%- include('../layouts/right_sidebar.ejs') -%>
-
         <!-- /Right-bar -->
 
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
 
         <!-- Vendor -->
-
         <script src="/assets/libs/jquery/jquery.min.js"></script>
-
         <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="/assets/libs/simplebar/simplebar.min.js"></script>
         <script src="/assets/libs/node-waves/waves.min.js"></script>
@@ -1164,7 +168,7 @@
         <script src="/assets/libs/jquery-mockjax/jquery.mockjax.min.js"></script>
         <script src="/assets/libs/devbridge-autocomplete/jquery.autocomplete.min.js"></script>
         <script src="/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
-        <script src="https://coderthemes.com/adminto/layouts/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+        <script src="https://coderthemes.com/adminto/layouts//assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
 
         <!-- Init js-->
         <script src="/assets/js/pages/form-advanced.init.js"></script>
@@ -1172,574 +176,7 @@
         <!-- App js -->
         <script src="/assets/js/app.min.js"></script>
 
-        <!-- add_product tableBody external js -->
-        <script>
-            // const { functions } = require("lodash");
-
-            let count = 0;
-
-
-            //image category
-            const main_image_changed1 = (tag, ind) => {
-                let imgTag;
-                if (ind) {
-                    imgTag = document.getElementById(`main-img-preview1_${ind}`);
-                } else {
-                    imgTag = document.getElementById(`main-img-preview1`);
-                }
-                // imgTag.classList.remove("d-none");
-                if (tag.files && tag.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        imgTag.setAttribute("src", e.target.result);
-                    };
-                    reader.readAsDataURL(tag.files[0]);
-                }
-                // let imge = document.getElementById("main-img-preview");
-
-            };
-
-            // js for single image and carosel image delete
-            const deleteSliderSingleImg = (tag) => {
-                let deletedNode = tag.parentNode;
-                let deleteFromParentNode = tag.parentNode.parentNode;
-
-                if (deletedNode) {
-                    deleteFromParentNode.removeChild(deletedNode);
-                    topUploadParent.style.display = "block";
-                }
-            };
-            function getCombinations(arrays, prefix = [], results = []) {
-                if (prefix.length === arrays.length) {
-                    results.push(prefix.slice());
-                    return;
-                }
-
-                for (let i = 0; i < arrays[prefix.length].length; i++) {
-                    prefix.push(arrays[prefix.length][i]);
-                    getCombinations(arrays, prefix, results);
-                    prefix.pop();
-                }
-                return results;
-            }
-
-            const Populate_variant_table = (tag, num) => {
-                let labelParent;
-                let table;
-                let tableHeadTr;
-
-                if (num) {
-                    labelParent = document.getElementById(`varient_container__${num}`);
-                    table = document.getElementById(`product_table_${num}`);
-                    tableHeadTr = document.getElementById(`tableHeadTr_${num}`);
-
-
-                } else {
-                    labelParent = document.getElementById(`varient_container_`);
-                    table = document.getElementById(`product_table`);
-                    tableHeadTr = document.getElementById(`tableHeadTr`);
-                }
-                let all_varient_table_labels = tableHeadTr.querySelectorAll(".varient_table_label");
-
-                Array.from(all_varient_table_labels).forEach(element => {
-                    element.remove();
-                })
-
-                let varient_labels = labelParent.querySelectorAll("label")
-                let varient_uls = labelParent.querySelectorAll(".colorInputUL");
-
-                //  for (let i = 0; i < varient_labels.length; i++) {
-                //     const element = varient_labels[i];
-                //     console.log("varient_labels == ", varient_labels[i]); 
-                //  }
-                //  for (let i = 0; i < varient_uls.length; i++) {
-                //     const element = varient_uls[i];
-                //     console.log("varient_labels == ", varient_uls[i]); 
-                //  }
-
-
-                let varient_table_labels = [];
-
-
-                const values = []; //aikhane problem
-                let emptyUlIndex = [];
-
-                $(varient_uls).each(function (index, element) {
-                    // console.log('element == ', element, element.querySelectorAll("li").length, 'index == ', index);
-                    let inputArray = [];
-                    if (element.querySelectorAll("li").length != "0") {
-                        varient_table_labels.push(all_varient_table_labels[index]);
-                        element.querySelectorAll("li").forEach(li => {
-                            inputArray.push(li.innerText)
-                        });
-                        values.push(inputArray)
-                    }
-                    else emptyUlIndex.push(index)
-                });
-                console.log("emptyUlIndex === ", emptyUlIndex);
-
-                const combinations = getCombinations(values);
-
-                for (let i = varient_labels.length - 1; i >= 0; i--) {
-                    console.log("the varient is === ", varient_labels[i]);
-                    if (!emptyUlIndex.includes(i)) {
-                        console.log("varient_labels each === ", i, varient_labels[i].textContent);
-                        let th = document.createElement("th");
-                        th.classList.add("varient_table_label");
-                        th.innerHTML = varient_labels[i].textContent;
-                        tableHeadTr.prepend(th);
-                        console.log("tableHeadTr == ", tableHeadTr);
-                    }
-                    else console.log("include here ==");
-                }
-
-
-
-
-                // Array.from(varient_labels).reverse().forEach(label=>{
-                //     let th = document.createElement("th");
-                //     th.classList.add("varient_table_label");
-                //     th.innerHTML = label.textContent;
-                //     tableHeadTr.prepend(th); 
-                // });
-
-                tableHeadTr.children[0].style.borderTopLeftRadius = "10px"
-                table.innerHTML = "";
-                console.log(combinations);
-
-                combinations.forEach((combination, key) => {
-                    let tr = document.createElement("tr");
-                    tr.classList.add("tableBody");
-                    combination.forEach((comb) => {
-                        let td = document.createElement("td");
-                        td.innerHTML = comb;
-                        tr.appendChild(td);
-                        console.log('hi', tr);
-                    });
-
-
-                    let input4 = document.createElement("input");
-                    input4.setAttribute("name", "quantitys[]");
-                    input4.classList.add("myInput");
-                    input4.setAttribute("placeholder", "Qunatity");
-                    let td4 = document.createElement("td");
-                    td4.appendChild(input4);
-                    tr.appendChild(td4);
-
-
-                    let icon = document.createElement("i");
-                    icon.classList.add(
-                        "mdi",
-                        "mdi-delete",
-                        "text-danger",
-                        "delete-table-data"
-                    );
-                    icon.setAttribute("id", "td_" + key);
-                    icon.setAttribute("onclick", "tableDataDelete(this)");
-                    icon.style.fontSize = "20px"
-                    let td7 = document.createElement("td");
-                    td7.style.textAlign = "center";
-                    td7.appendChild(icon);
-                    tr.appendChild(td7);
-                    table.appendChild(tr);
-                });
-                let tableDataleftBox = table.querySelectorAll("tr")
-                let tableLastRow = tableDataleftBox[tableDataleftBox.length - 1];
-                let tableDataList = tableLastRow.querySelectorAll("td");
-                let firstTableData = tableDataList[0];
-                let lastTableData = tableDataList[tableDataList.length - 1];
-                firstTableData.style.borderBottomLeftRadius = "10px"
-                lastTableData.style.borderBottomRightRadius = "10px"
-
-            };
-            // End Populate_variant_table function 
-
-            const tableDataDelete = (tag) => {
-                // let table = document.getElementById("product_table");
-                let deleteItem = tag.parentNode.parentNode;
-                let parentTable = tag.parentNode.parentNode.parentNode;
-                // console.log("the table is = ", table, deleteItem, parentTable);
-                parentTable.removeChild(deleteItem);
-            };
-
-            const table_content_dropdown_add = (tag, num) => {
-                count += 1;
-                let table_content = document.getElementById("table_content_dropdown_");
-                let table_content_container;
-                let new_content = table_content.cloneNode(true);
-                if (num) {
-                    table_content_container = document.getElementById(`table_content_dropdown_box_${num}`)
-                    // let new_content = table_content.cloneNode(true);
-                    new_content.setAttribute("id", `table_content_dropdown_${num}_${count}`);
-
-                    var innerIDs = [];
-
-                    function collectInnerIDs(element) {
-                        if (element.hasAttribute("onclick")) {
-                            let onchangeIS = element.getAttribute("onclick");
-                            var onclickParts = onchangeIS.split(',' || ' ');
-                            if (onclickParts[0] == "deleteTableContent(this") {
-                                console.log("what is element === ", element);
-                                element.setAttribute("onclick", onclickParts[0] + ', ' + num + ')');
-                            }
-                        }
-
-                        for (var i = 0; i < element.children.length; i++) {
-                            collectInnerIDs(element.children[i]);
-                        }
-                    }
-
-                    collectInnerIDs(new_content);
-                }
-                else {
-                    table_content_container = document.getElementById(`table_content_dropdown_box`)
-                    new_content.setAttribute("id", "table_content_dropdown_" + count);
-                }
-
-                new_content.classList.remove("d-none");
-                let firstChild = new_content.children[0];
-                let input = firstChild.children[0].children[1].children[0];
-                let dropDownMenu = firstChild.children[0].children[1].children[1];
-                console.log('firstChild', firstChild, input, dropDownMenu);
-
-                input.setAttribute("id", "contentsTitleInput_" + count);
-                input.setAttribute("onclick", "showContentDropdown(" + count + ")");
-                dropDownMenu.setAttribute("id", "dropdownMenu_" + count);
-                table_content_container.appendChild(new_content);
-            };
-
-            const deleteTableContent = (tag, num) => {
-                let table_content_container;
-                if (num) {
-                    table_content_container = document.getElementById(`table_content_dropdown_box_${num}`)
-                }
-                else {
-                    table_content_container = document.getElementById(`table_content_dropdown_box`)
-                }
-                let table_content = tag.parentNode.parentNode;
-                console.log("table_content", table_content_container, table_content);
-                table_content_container.removeChild(table_content);
-            };
-
-            const cancel = () => {
-                let product_table = document.getElementById("product_table");
-                const allInput = $(".main-contact-area").find("input");
-                const allSelect = $(".main-contact-area").find("select");
-                const allTextarea = $(".main-contact-area").find("textarea");
-                for (let i = 0; i < allInput.length; i++) {
-                    allInput[i].value = "";
-                }
-                for (let i = 0; i < allSelect.length; i++) {
-                    // allSelect[i].value = "";
-                    allSelect[i].selectedIndex = 0;
-                }
-                product_table.innerHTML = "";
-                for (let i = 0; i < allTextarea.length; i++) {
-                    allTextarea[i].value = "";
-                }
-            };
-
-            let findInput = 0;
-            let oldDropdownContent = '';
-
-            const showContentDropdown = (id, num) => {
-                let dropdownMenu_s;
-                if (num) {
-                    dropdownMenu_s = document.getElementById(`dropdownMenu_${id}_${num}`);
-                }
-                else {
-                    dropdownMenu_s = document.getElementById(`dropdownMenu_${id}`);
-                }
-                if (oldDropdownContent && !oldDropdownContent.classList.contains('d-none') && findInput != id) {
-                    oldDropdownContent.classList.add('d-none')
-                }
-                dropdownMenu_s.classList.toggle("d-none");
-                findInput = id;
-                oldDropdownContent = dropdownMenu_s
-            };
-
-            document.addEventListener("click", function (event) {
-                var target = event.target
-                let dropdownBox = document.querySelectorAll(".dropdownBox");
-                if (target.tagName != 'INPUT') {
-                    for (let i = 0; i < dropdownBox.length; i++) {
-                        if (!dropdownBox[i].classList.contains('d-none')) {
-                            dropdownBox[i].classList.add("d-none");
-                        }
-                    }
-                }
-            })
-
-            let allInputTags = document.querySelectorAll('input');
-            $(allInputTags).each(function (index, element) {
-                element.addEventListener("input", function (e) {
-                    let dropdownBox = document.querySelectorAll(".dropdownBox");
-                    for (let i = 0; i < dropdownBox.length; i++) {
-                        console.log("dropdownBox[i]", dropdownBox[i]);
-                        if (!dropdownBox[i].classList.contains('d-none')) {
-                            dropdownBox[i].classList.add("d-none");
-                        }
-                    }
-                })
-            })
-
-            function selectOption(tag, num) {
-
-                let textInput;
-                if (num) {
-                    textInput = document.getElementById(`contentsTitleInput_${findInput}_${num}`);
-                }
-                else {
-                    textInput = document.getElementById(`contentsTitleInput_${findInput}`);
-
-                }
-                let text = tag.textContent;
-                textInput.value = text;
-
-                let parent = tag.parentNode;
-                parent.classList.add("d-none");
-            }
-
-
-
-            const openAdditionalSection = () => {
-                let area = document.getElementById("AdditionalArea");
-                area.classList.remove("d-none");
-            };
-
-            // window.addEventListener("click", function (event) {
-            //     const dropdownMenu = document.getElementById("dropdownMenu_" + findInput);
-            //     console.log("dropdownMenu", dropdownMenu);
-            //     const textInput = document.getElementById(
-            //         "contentsTitleInput_" + findInput
-            //     );
-            //     let allClassList = dropdownMenu.classList.value;
-            //     const classListArray = allClassList.split(" ");
-            //     classListArray.find((className) => {
-            //         if (!textInput.contains(event.target)) {
-            //             if (!className.includes("d-none")) {
-            //                 dropdownMenu.classList.add("d-none");
-            //             }
-            //         }
-            //     });
-            // });
-
-            const removeSecondaryImg = (tag) => {
-                let parentImgContainer = tag.parentNode.parentNode;
-                let imge_cotainer = tag.parentNode;
-                parentImgContainer.removeChild(imge_cotainer);
-            };
-
-            const secondary_image_changed = (tag, ind) => {
-                // const previewContainer = document.getElementById("secondary-img-container");
-                let previewContainer;
-                if (ind) {
-                    previewContainer = document.getElementById(`secondary-img-container_${ind}`);
-                } else {
-                    previewContainer = document.getElementById(`secondary-img-container`);
-                }
-                // const previewContainer = document.querySelector(
-                //     ".secondary-img-container"
-                // );
-                // const secondaryImageAdder = document.querySelector(
-                //     ".secondary-img-container"
-                // );
-
-                // previewContainer.innerHTML = ''; // Clear previous previews
-                if (tag.files && tag.files.length > 0) {
-                    for (let i = 0; i < tag.files.length; i++) {
-                        const file = tag.files[i];
-                        const reader = new FileReader();
-                        reader.onload = function (e) {
-                            // const input = document.createElement("input");
-                            // input.type = "file";
-                            // input.classList.add("d-none");
-                            // input.files[0] = reader.result;
-                            // input.setAttribute("name", "secondary_images[]");
-                            // const fileList = new DataTransfer(); // Create a new FileList object and add the selected file to it
-                            // fileList.items.add(file);
-                            // console.log('previewContainer',fileList);
-                            // input.files = fileList.files; // Assign the new FileList to the main page image field
-
-                            const div = document.createElement("div");
-                            div.style.width = "90px";
-                            div.style.height = "90px";
-                            div.style.background = `url(${e.target.result})`;
-                            div.style.backgroundSize = 'cover';
-                            div.style.marginRight = "8px";
-                            div.style.marginBottom = "8px";
-
-                            div.classList.add("position-relative");
-                            const span = document.createElement("span");
-                            span.innerHTML =
-                                '<i class="mdi mdi-close" style="font-size:22px;color:red;border:1px solid transparent;"></i>';
-                            span.classList.add("position-absolute");
-                            // span.setAttribute("onclick", `removeSecondaryImg(${i})`);
-                            span.setAttribute("onclick", `removeSecondaryImg(this)`);
-                            span.style.top = "0";
-                            span.style.right = "0px";
-                            span.style.cursor = "pointer";
-                            div.append(span);
-                            // const img = document.createElement("img");
-                            // img.src = e.target.result;
-                            // img.alt = `Preview Image ${i + 1}`;
-                            // img.style.width = "100%";
-                            // img.style.height = "auto";
-                            // console.log(img);
-                            div.setAttribute("id", `secondary_img_preview_${i}`);
-                            // div.append(input);
-                            // div.append(img);
-                            previewContainer.prepend(div);
-                        };
-                        reader.readAsDataURL(tag.files[i]);
-                    }
-                    //   previewContainer.append(secondaryImageAdder);
-                }
-            };
-
-
-            const save_varient = (tag, num) => {
-                console.log('save the varient ====');
-                let varient_container;
-                let custom_variant;
-                let newVarientUl;
-                let modal_varient_name;
-                let varientLabelInput;
-                let varientTagUlInput;
-                if (num) {
-                    varient_container = document.getElementById(`varient_container__${num}`);
-                    custom_variant = document.getElementById(`custom_variant_${num}`);
-                    newVarientUl = document.getElementById(`addNewVarient_${num}`)
-                    modal_varient_name = document.getElementById(`modal_varient_name_${num}`).value;
-                    varientLabelInput = document.getElementById(`modal_varient_name_${num}`)
-                    varientTagUlInput = document.getElementById(`addNewVarient_${num}`)
-
-                } else {
-                    varient_container = document.getElementById(`varient_container_`);
-                    custom_variant = document.getElementById(`custom_variant`);
-                    newVarientUl = document.getElementById("addNewVarient")
-                    modal_varient_name = document.getElementById("modal_varient_name").value;
-                    varientLabelInput = document.getElementById(`modal_varient_name`)
-                    varientTagUlInput = document.getElementById(`addNewVarient`)
-                }
-
-
-                // let modal_varient_name = document.querySelector(
-                //     "#modal_varient_name"
-                // ).value;
-
-                // let varient_container = document.querySelector("#varient_container_");
-                // varient_container.classList.add("colorVariantBox");
-                let data = [];
-                let varientLi = newVarientUl.querySelectorAll("li");
-                varientLi.forEach((li) => {
-                    data.push(li.innerText)
-                })
-                // let data = $(custom_variant).select2("val");
-
-                let colorVariantBox = document.createElement("div");
-                colorVariantBox.classList.add("col-lg-4", "col-md-6", "col-sm-12", "colorVariantBox", "mt-3");
-                let variantInnderBox = document.createElement('div')
-                variantInnderBox.style.backgroundColor = "white";
-                variantInnderBox.style.borderRadius = "5px";
-                variantInnderBox.style.padding = "10px";
-                let label2 = document.createElement("label");
-                label2.classList.add('varient_label', "inline-block", "d-flex", "justify-content-between", "align-items-center");
-                label2.innerText = modal_varient_name;
-                // label2.classList.add("inline-block");
-                // label2.classList.add("varient_label");
-                // label2.classList.add("d-flex");
-                // label2.classList.add("justify-content-between");
-                // label2.classList.add("align-items-center");
-                // label2.style.marginTop = "20px";
-                // x-mark
-                let x_span = document.createElement("span");
-                x_span.setAttribute(
-                    "onclick",
-                    "this.parentNode.parentNode.parentNode.remove()"
-                );
-                x_span.innerHTML =
-                    '<i class="fa-solid mdi mdi-close" style="font-size:20px;color:skyblue;border-radius:50%;cursor:pointer;"></i>';
-                label2.append(x_span);
-                let dropdownPositionDiv = document.createElement("div");
-                dropdownPositionDiv.classList.add("position-relative")
-                let ul = document.createElement("ul");
-                ul.classList.add('colorInputUL');
-                ul.style.marginBottom = "0px";
-                ul.setAttribute("onclick", "showColorDropDown(this)");
-                let inputInUL = document.createElement("input");
-                inputInUL.setAttribute("class", "tagIntpus");
-                inputInUL.setAttribute("type", "text");
-                inputInUL.setAttribute("spellcheck", "false");
-                inputInUL.setAttribute("placeholder", "Write here for tag");
-                inputInUL.setAttribute("onkeypress", "return event.keyCode != 13;");
-                ul.append(inputInUL);
-
-                let dropdownOptionBox = document.createElement('div');
-                dropdownOptionBox.classList.add("dropdownBox", "d-none");
-                dropdownOptionBox.style.height = "200px";
-                dropdownOptionBox.style.overflowY = "auto"
-                let dropdownUL = document.createElement('ul');
-                data.forEach((element) => {
-                    let li = document.createElement("li");
-                    onclick = "getValueFronDropDown(this)"
-                    li.setAttribute("onclick", "getValueFronDropDown(this)")
-                    li.textContent = element;
-                    dropdownUL.append(li);
-                });
-
-                // dropdownOptionBox.append(ul);
-                dropdownOptionBox.append(dropdownUL);
-                dropdownPositionDiv.append(ul);
-                dropdownPositionDiv.append(dropdownOptionBox);
-                variantInnderBox.append(label2);
-                variantInnderBox.append(dropdownPositionDiv);
-                colorVariantBox.append(variantInnderBox);
-                varient_container.append(colorVariantBox)
-
-                // Create a new script element
-                const newScript = document.createElement("script");
-
-                // Set the script content
-                newScript.textContent = `
-                                $("#varient-select2-${modal_varient_name}").select2({
-                                tags: true,
-                                tokenSeparators: [',', ' '],
-                                dropdownParent: $('.addProduct___'),
-                                placeholder: "Select Product Color",
-                                allowClear: true
-                                });
-                                `;
-
-                // Append the new script to the document body
-                document.body.appendChild(newScript);
-
-                varientLabelInput.value = '';
-                let varientTagUlInputLi = varientTagUlInput.querySelectorAll('li');
-                for (let i = 0; i < varientTagUlInputLi.length; i++) {
-                    console.log(varientTagUlInputLi[i]);
-                    varientTagUlInputLi[i].remove();
-                    // removarientTagUlInputLi[i];
-                }
-                //  console.log("varientTagInput", varientTagInput.querySelectorAll('li'));;
-            };
-
-        </script>
-
-        <!-- hide and show enable checkbox -->
-        <script>
-            $('#myCheckbox').click(function () {
-                if ($(this).is(':checked')) {
-                    $('.enable_div').show();
-
-                } else {
-                    $('.enable_div').hide();
-                }
-            });
-
-        </script>
-
-        <!-- date setup js in min attributes -->
+        <!-- date setup in min attributes -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
 
@@ -1751,6 +188,27 @@
             console.log('currentDate', currentDate);
             // Set the min attribute of the date input
             document.getElementById("date").min = currentDate;
+        </script>
+
+        <script>
+            let count = 0;
+            const seller_image_changed = (tag, ind) => {
+                let imgTag;
+                if (ind) {
+                    imgTag = document.getElementById(`main-img-preview_${ind}`);
+                } else {
+                    imgTag = document.getElementById(`main-img-preview`);
+                }
+                // imgTag.classList.remove("d-none");
+                if (tag.files && tag.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        imgTag.setAttribute("src", e.target.result);
+                    };
+                    reader.readAsDataURL(tag.files[0]);
+                }
+
+            };
         </script>
 
 </body>

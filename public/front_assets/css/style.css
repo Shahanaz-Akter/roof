@@ -30,7 +30,7 @@ body {
   color: #797979;
   letter-spacing: 0.5px;
   background-color: #ffffff;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', 'sans-serif' !important;
   overflow-x: hidden;
 }
 

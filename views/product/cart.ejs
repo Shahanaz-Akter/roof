@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--favicon-->
+    <link rel="icon" href="../../front_assets/img/logo.ico" type="image/webp" />
+
+    <!-- CSS files -->
+    <link href="../../front_assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <!-- Plugins -->
+    <link rel="stylesheet" type="text/css" href="../../front_assets/plugins/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="../../front_assets/plugins/slick/slick-theme.css" />
+
+    <link href="../../front_assets/css/style.css" rel="stylesheet">
+    <link href="../../front_assets/css/dark-theme.css" rel="stylesheet">
+
+    <title>Ribbon Cart</title>
+    <style>
+        .tab {
+            display: none;
+        }
+
+        .sec1 {
+            display: none;
+        }
+
+        .sec2 {
+            display: none;
+        }
+
+        .sec3 {
+            display: none;
+        }
+
+        .sec4 {
+            display: none;
+        }
+
+        .sec5 {
+            display: none;
+        }
+
+        .cp {
+            cursor: pointer;
+        }
+
+        .tab-item {
+            text-align: center;
+            text-decoration: none;
+            color: #000;
+            padding: 12px 16px;
+        }
+
+        .tab-item:focus {
+            text-decoration: none;
+            color: #FF406C;
+            background-color: #fff;
+        }
+
+        .outline {
+            border: 2px solid black;
+            border-radius: 15px;
+        }
+
+        .outline:hover {
+            color: #FF406C;
+            border: 2px solid #FF406C;
+
+        }
+
+        .outline:focus {
+            color: #FF406C;
+            border: 2px solid #FF406C;
+        }
+
+
+        .tab-item:focus path {
+            text-decoration: none;
+            color: #FF406C;
+            fill: #FF406C;
+            background-color: #fff;
+        }
+
+        .tab-item:hover {
+            color: #FF406C;
+        }
+
+        .tab-item:hover path {
+            fill: #FF406C;
+        }
+
+        *:focus {
+            outline: none;
+            border: none;
+        }
+
+        .offer-text {
+            font-size: small;
+            color: #FF406C;
+        }
+
+        .skew {
+            width: 30vw;
+            height: 20vw;
+            -webkit-clip-path: polygon(0 0, 100% 20%, 100% 80%, 0% 100%);
+            clip-path: polygon(0% 20%, 100% 0%, 100% 100%, 0% 90%);
+            background: #FE4F77;
+
+        }
+
+        @media screen and (max-width: 576px) {
+            .navbar-brand {
+                margin-left: 1.5rem;
+            }
+
+            .tab {
+                display: flex;
+                justify-content: space-around;
+                background-color: #fff;
+                color: black;
+                padding: 12px;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                max-width: 430px;
+            }
+
+            .tab-item {
+                padding: 12px 10px;
+            }
+
+            .slider1 {
+                display: none;
+            }
+
+            .sec1 {
+                display: block;
+            }
+
+            .sec2 {
+                display: block;
+            }
+
+            .sec3 {
+                display: block;
+            }
+
+            .sec4 {
+                display: block;
+            }
+
+            .sec5 {
+                display: block;
+            }
+
+        }
+
+        @media screen and (max-width: 768px) {
+            .head {
+                display: none;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--page loader-->
+    <div class="loader-wrapper">
+        <div class="d-flex justify-content-center align-items-center position-absolute top-50 start-50 translate-middle">
+            <div class="spinner-border text-dark" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <!--end loader-->
+
+    <!--start top header-->
+    <header class="top-header">
+        <nav class="navbar navbar-expand-md w-100 navbar-dark container gap-3">
+            <a class="navbar-brand d-xl-inline" href="/"><img src="../../front_assets/img/roops_logo.png" style="width: 50px;" alt=""></a>
+            <h3 class="fw-bold ms-2 mt-1" style="margin-bottom:0px ;">Checkout</h3>
+
+            <div class="primary-menu">
+
+                <ul class="navbar-nav justify-content-start flex-grow-1 gap-1">
+
+
+                    <% parent.forEach(p=>{ %>
+
+                        <li class="nav-item head dropdown">
+                            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="https://codervent.com/shopingo/demo/shopingo_V1/tv-shows.html" data-bs-toggle="dropdown">
+                                <%=p.parent_category%>
+                            </a>
+                            <div class="dropdown-menu dropdown-large-menu">
+                                <div class="row">
+                                    <%p.subcategories.forEach(sub=>{%>
+                                        <div class="col-12 col-md-3 col-xl-4">
+                                            <h6 class="large-menu-title">
+                                                <%=sub.sub_category%>
+                                            </h6>
+                                            <ul class="list-unstyled">
+                                                <%sub.categories.forEach(cate=>{%>
+                                                    <li><a href="/product/all_Product/<%=cate._id%>/<%=cate.category%>">
+                                                            <%=cate.category%>
+                                                        </a>
+                                                    </li>
+                                                    <%});%>
+                                            </ul>
+                                        </div>
+
+                                        <%});%>
+
+                                            <!-- <div class="col-12 col-md-3 col-xl-4 d-none d-xl-block">
+                      <div class="pramotion-banner1">
+                        <img src="../../front_assets/img/menu-img.webp" class="img-fluid" alt="" />
+                      </div>
+                    </div> -->
+
+                                </div>
+                            </div>
+                        </li>
+                        <%})%>
+
+                            <li class="nav-item search d-none d-md-block d-lg-block d-flex align-items-center">
+                                <form class="rounded-pill border border-2" style="width: 355px;">
+                                    <button class="border-0 bg-white rounded-4 " type="submit"><i class="fa fa-search"></i></button>
+                                    <input class="rounded-2 fs-6" style="width:300px;outline: none;border: 1px solid transparent;box-shadow:none!important" type="text" placeholder="Search for Products, Brand ...." name="search">
+                                </form>
+                            </li>
+                </ul>
+
+
+            </div>
+            <ul class="navbar-nav secondary-menu flex-row">
+                <li class="nav-item d-none d-lg-block">
+                    <a class="nav-link" href="javascript:;"><i class="fas fa-user-edit"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="23" viewBox="0 0 21 23" fill="none">
+                            <path
+                                d="M7.75654 20.9897C8.46167 21.6121 9.38792 21.9897 10.4024 21.9897C11.4168 21.9897 12.3431 21.6121 13.0482 20.9897M16.4024 7.98975C16.4024 6.39845 15.7702 4.87232 14.645 3.74711C13.5198 2.62189 11.9937 1.98975 10.4024 1.98975C8.81106 1.98975 7.28494 2.62189 6.15972 3.74711C5.0345 4.87232 4.40236 6.39845 4.40236 7.98975C4.40236 11.0799 3.62283 13.1957 2.75203 14.5952C2.01749 15.7756 1.65022 16.3659 1.66369 16.5305C1.6786 16.7128 1.71722 16.7823 1.86414 16.8913C1.99682 16.9897 2.59495 16.9897 3.79122 16.9897H17.0135C18.2098 16.9897 18.8079 16.9897 18.9406 16.8913C19.0875 16.7823 19.1261 16.7128 19.141 16.5305C19.1545 16.3659 18.7872 15.7756 18.0527 14.5952C17.1819 13.1957 16.4024 11.0799 16.4024 7.98975Z"
+                                stroke="#272C3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="20" viewBox="0 0 23 20" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M11.4175 3.29206C9.41812 0.95465 6.08406 0.325893 3.57901 2.46626C1.07396 4.60663 0.721284 8.18523 2.68851 10.7167C4.17441 12.6287 8.39561 16.4672 10.3723 18.2311C10.7357 18.5554 10.9174 18.7175 11.1301 18.7813C11.3148 18.8368 11.5201 18.8368 11.7048 18.7813C11.9175 18.7175 12.0992 18.5554 12.4626 18.2311C14.4393 16.4672 18.6605 12.6287 20.1464 10.7167C22.1137 8.18523 21.804 4.58412 19.2559 2.46626C16.7078 0.348407 13.4168 0.95465 11.4175 3.29206Z"
+                                stroke="#272C3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link position-relative" href="/product/cart">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" viewBox="0 0 22 23" fill="none">
+                            <path
+                                d="M14.8698 8.98975V5.98975C14.8698 3.78061 13.0789 1.98975 10.8698 1.98975C8.66062 1.98975 6.86975 3.78061 6.86975 5.98975V8.98974M2.46176 10.3417L1.86176 16.7417C1.69116 18.5614 1.60586 19.4713 1.9078 20.174C2.17305 20.7914 2.63787 21.3018 3.22777 21.6235C3.89928 21.9897 4.81312 21.9897 6.6408 21.9897H15.0987C16.9264 21.9897 17.8402 21.9897 18.5117 21.6235C19.1016 21.3018 19.5665 20.7914 19.8317 20.174C20.1336 19.4713 20.0483 18.5614 19.8778 16.7417L19.2778 10.3417C19.1337 8.80509 19.0617 8.03678 18.7161 7.45591C18.4117 6.94433 17.9621 6.53486 17.4243 6.27959C16.8137 5.98975 16.0421 5.98975 14.4987 5.98975L7.2408 5.98975C5.69744 5.98975 4.92577 5.98975 4.31517 6.27959C3.77742 6.53486 3.32776 6.94433 3.02341 7.45591C2.67784 8.03678 2.60582 8.80509 2.46176 10.3417Z"
+                                stroke="#272C3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link position-relative" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" viewBox="0 0 22 23" fill="none">
+                            <path
+                                d="M10.0469 7.95105L14.0469 11.951M14.0469 11.951L10.0469 15.951M14.0469 11.951H1.04688M1.3847 6.95105C3.11374 3.96204 6.34546 1.95105 10.0469 1.95105C15.5697 1.95105 20.0469 6.4282 20.0469 11.951C20.0469 17.4739 15.5697 21.951 10.0469 21.951C6.34546 21.951 3.11374 19.9401 1.3847 16.951"
+                                stroke="#272C3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </li>
+
+            </ul>
+            <li class="d-lg-none d-md-none d-md-flex d-sm-block d-sm-flex d-xl-none mb-4 mx-auto search " style="list-style: none;">
+                <form class="rounded-pill border border-2" style="width: 355px;">
+                    <button class="border-0 bg-white rounded-4 " type="submit"><i class="fa fa-search"></i></button>
+                    <input class="rounded-2 fs-6" style="width:300px;outline: none;" type="text" placeholder="Search for Products, Brand ...." name="search">
+                </form>
+            </li>
+
+        </nav>
+
+        <div class="tab shadow-lg">
+            <a class="tab-item" href="/">
+                <!-- <i data-feather="home"></i> -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+                    <path
+                        d="M19.8008 16.7366C17.4578 19.0355 13.583 19.0122 10.9186 16.4281C9.59153 15.1426 8.35003 13.7715 6.90378 12.2656C4.95471 14.3858 3.17929 16.3141 1.40387 18.245C1.28724 18.1725 1.17061 18.0999 1.05397 18.0273C1.00732 17.7629 0.92438 17.496 0.921788 17.2316C0.911421 13.857 0.885502 10.485 0.92438 7.11043C0.96585 3.60625 3.95685 0.713739 7.10335 0.936639C7.10335 4.59633 7.10335 8.25084 7.10335 12.3097C8.47185 10.7779 9.66151 9.44828 10.9263 8.03313C14.0391 11.0889 16.885 13.8778 19.8008 16.7366Z"
+                        fill="#272C3F" />
+                    <path d="M12.8884 6.04762C13.4093 4.00264 12.8754 2.24796 10.535 0.962402C13.2875 0.962402 15.672 0.962402 17.9451 0.962402C16.2681 2.64711 14.5679 4.35514 12.8884 6.04762Z" fill="#272C3F" />
+                </svg>
+                <span>Home</span>
+            </a>
+
+            <a class="tab-item" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="18" viewBox="0 0 27 18" fill="none">
+                    <path
+                        d="M9.39595 9.55167C7.5996 11.3115 5.83982 13.0361 4.07858 14.7623C3.26671 15.558 2.45338 16.3524 1.64004 17.1467C1.43671 17.3442 1.18803 17.6045 0.942276 17.3134C0.834026 17.1862 0.883763 16.8014 1.00079 16.6274C3.74505 12.5753 6.51126 8.53647 9.26722 4.49176C9.52175 4.11727 9.76605 4.08363 10.1288 4.35133C11.7189 5.52305 13.3222 6.67868 14.921 7.84017C15.0615 7.94256 15.2048 8.03911 15.3862 8.16345C17.2191 6.50899 19.0448 4.85893 20.9508 3.13718C20.2545 2.45697 19.5845 1.80308 18.9146 1.14773C18.7902 1.02486 18.6381 0.916608 18.5518 0.771788C18.4611 0.621117 18.3543 0.403157 18.404 0.268576C18.4494 0.147162 18.6937 0.0374498 18.8517 0.0330613C19.7089 0.00965606 20.5661 0.0228215 21.4233 0.0228215C22.9798 0.0228215 24.5377 0.0345237 26.0941 0.015507C26.5768 0.00965566 26.748 0.207137 26.7465 0.667928C26.7378 3.03039 26.7495 5.3914 26.729 7.75386C26.7275 7.95866 26.5768 8.20441 26.4174 8.34192C26.356 8.39604 26.0385 8.24391 25.9083 8.11372C25.2413 7.44959 24.5962 6.76353 23.9174 6.05698C22.8905 7.12777 21.9324 8.12103 20.9786 9.11868C19.469 10.7 17.9506 12.274 16.4599 13.8743C16.0928 14.2678 15.8134 14.2868 15.3921 13.9709C13.5752 12.6061 11.7394 11.2632 9.91086 9.91446C9.75727 9.79743 9.59928 9.6921 9.39595 9.55167Z"
+                        fill="#272C3F" />
+                </svg>
+                <span>HotTrends</span>
+            </a>
+
+            <a class="tab-item" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="18" viewBox="0 0 640 512">
+                    <path
+                        d="M96 224c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm448 0c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm32 32h-64c-17.6 0-33.5 7.1-45.1 18.6 40.3 22.1 68.9 62 75.1 109.4h66c17.7 0 32-14.3 32-32v-32c0-35.3-28.7-64-64-64zm-256 0c61.9 0 112-50.1 112-112S381.9 32 320 32 208 82.1 208 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C179.6 288 128 339.6 128 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zm-223.7-13.4C161.5 263.1 145.6 256 128 256H64c-35.3 0-64 28.7-64 64v32c0 17.7 14.3 32 32 32h65.9c6.3-47.4 34.9-87.3 75.2-109.4z" />
+                </svg>
+                <span>Social</span>
+            </a>
+
+            <a class="tab-item" href="/product/cart">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18" fill="none">
+                    <path
+                        d="M2.90202 1.09348C2.38103 1.09348 1.86774 1.09348 1.35446 1.09348C1.01997 1.09194 0.805718 0.902351 0.807259 0.609485C0.808801 0.322784 1.01381 0.131651 1.34058 0.128568C1.94173 0.123944 2.54288 0.123944 3.14402 0.127026C3.41069 0.128568 3.57562 0.276542 3.66039 0.583281C3.83765 1.21526 4.018 1.84723 4.18293 2.48229C4.22146 2.62872 4.28774 2.66109 4.42801 2.66109C8.78709 2.65647 13.1446 2.65647 17.5037 2.65647C17.9677 2.65647 18.4301 2.65647 18.8941 2.65801C19.3195 2.65955 19.5229 2.92929 19.4089 3.33931C18.6151 6.16778 17.8197 8.99625 17.0259 11.8263C17.0151 11.8617 17.0058 11.8987 16.9966 11.9357C16.9288 12.2424 16.8147 12.3349 16.4941 12.3365C15.3165 12.338 14.1388 12.338 12.9627 12.338C10.8017 12.338 8.6422 12.338 6.48116 12.338C6.09118 12.338 5.97712 12.2517 5.8723 11.8725C4.8966 8.31341 3.91935 4.75739 2.9421 1.19984C2.93439 1.17055 2.92052 1.14281 2.90202 1.09348ZM10.7308 8.48913C10.478 8.21784 10.2437 7.96505 10.0079 7.71534C9.789 7.48259 9.51309 7.45022 9.31117 7.63057C9.09845 7.8217 9.1 8.10069 9.31888 8.34423C9.60712 8.66639 9.89536 8.987 10.1836 9.30915C10.4688 9.62822 10.7246 9.65134 11.0591 9.37697C12.2136 8.43518 13.3681 7.49338 14.5211 6.5485C14.592 6.48993 14.6614 6.41903 14.703 6.33887C14.7939 6.16315 14.74 5.98127 14.5797 5.85641C14.3824 5.70227 14.1527 5.70073 13.96 5.85641C13.3342 6.36662 12.7084 6.87836 12.0826 7.38857C11.6387 7.7508 11.1917 8.11457 10.7308 8.48913Z"
+                        fill="#272C3F" />
+                    <path d="M9.76449 15.1124C9.75061 16.2161 8.90438 17.0438 7.80691 17.0284C6.72793 17.013 5.90482 16.1529 5.91869 15.06C5.93256 14.0026 6.79421 13.1703 7.86086 13.1841C8.946 13.1949 9.77836 14.0381 9.76449 15.1124Z" fill="#272C3F" />
+                    <path d="M13.7999 15.1031C13.8076 14.0041 14.6461 13.1718 15.7328 13.1841C16.8041 13.1964 17.6488 14.0612 17.6441 15.1401C17.638 16.2022 16.7717 17.0407 15.6927 17.0283C14.6261 17.016 13.7922 16.1682 13.7999 15.1031Z" fill="#272C3F" />
+                </svg>
+                <span>Checkout</span>
+            </a>
+
+            <a class="tab-item" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+                    <path
+                        d="M6.13784 18.0218C4.39141 17.9844 2.64297 17.947 0.896532 17.9057C0.436838 17.8959 0.366579 17.825 0.390668 17.3647C0.438845 16.436 0.474978 15.5034 0.567319 14.5787C0.707836 13.1778 1.46262 12.1488 2.67308 11.4209C3.64265 10.8365 4.70657 10.4824 5.78655 10.1636C5.89495 10.1321 6.05554 10.1912 6.16193 10.2561C7.5912 11.0982 9.04857 11.1513 10.4999 10.3486C10.8352 10.1617 11.0961 10.1499 11.4374 10.2659C12.3788 10.5866 13.3203 10.9054 14.1735 11.4228C14.8821 11.8537 15.4742 12.3967 15.8617 13.1345C15.944 13.29 15.94 13.3923 15.8095 13.5241C14.6091 14.738 13.4127 15.9559 12.2283 17.1836C12.0476 17.3706 11.9171 17.6086 11.7847 17.8329C11.7144 17.9529 11.6381 18.0021 11.4976 18.0021C9.93383 18.0041 8.37007 18.012 6.80631 18.0179C6.58349 18.0179 6.36067 18.0179 6.13985 18.0179C6.13784 18.0179 6.13784 18.0198 6.13784 18.0218Z"
+                        fill="#272C3F" />
+                    <path d="M8.44438 0.912512C10.9777 0.922349 13.0112 2.93313 13.0032 5.422C12.9952 7.90498 10.9456 9.90002 8.40624 9.89608C5.87492 9.89018 3.82938 7.85776 3.84142 5.36298C3.85347 2.90558 5.92711 0.902674 8.44438 0.912512Z" fill="#272C3F" />
+                    <path d="M14.587 19.7631C13.8102 19.0332 13.0494 18.317 12.2625 17.5772C13.3244 16.4951 14.3702 15.4248 15.4321 14.3427C16.211 15.0765 16.9698 15.7927 17.7527 16.5305C16.6928 17.6107 15.6449 18.681 14.587 19.7631Z" fill="#272C3F" />
+                    <path
+                        d="M17.9735 16.3122C17.1906 15.5743 16.4258 14.8542 15.6489 14.1184C16.1769 13.5813 16.6888 13.052 17.2107 12.5365C17.3392 12.4106 17.5138 12.4205 17.6483 12.5444C18.2706 13.1229 18.8909 13.7052 19.5071 14.2896C19.6316 14.4076 19.6557 14.5709 19.5352 14.6968C19.0274 15.2359 18.5055 15.7632 17.9735 16.3122Z"
+                        fill="#272C3F" />
+                    <path
+                        d="M14.3441 19.9657C13.9225 20.0935 13.5371 20.2077 13.1537 20.3257C12.6639 20.4752 12.1781 20.6366 11.6843 20.7664C11.5659 20.7979 11.3812 20.7684 11.2969 20.6917C11.2246 20.6248 11.2065 20.4398 11.2407 20.3296C11.4876 19.5486 11.7526 18.7734 12.0115 17.9962C12.0256 17.9549 12.0456 17.9136 12.0798 17.8309C12.8365 18.5451 13.5753 19.2416 14.3441 19.9657Z"
+                        fill="#272C3F" />
+                </svg>
+                <span>Portfolio</span>
+            </a>
+
+        </div>
+    </header>
+    <!--end top header-->
+
+    <!--start page content-->
+    <div class="page-content" style="margin-bottom: 100px;">
+
+        <div class="container">
+            <img src="img/ribon/Group 45.png" class="d-none d-lg-block img-fluid" alt="">
+
+            <img src="img/ribon/Group 45-3.png" class="cart-img img-fluid" alt="">
+
+            <form action="/customer/post_order" method="post">
+                <div class="row my-5 ">
+                    <style>
+                        input {
+                            width: 100%;
+                            border: 1px solid #aaa;
+                            border-radius: 4px;
+                            /* margin: 8px 8px; */
+                            outline: none;
+                            padding: 8px;
+                            box-sizing: border-box;
+                            transition: .3s;
+                        }
+
+                        input[type=text]:focus {
+                            border-color: dodgerBlue;
+                            box-shadow: 0 0 8px 0 dodgerBlue;
+                        }
+                    </style>
+                    <%let products=locals.session.products%>
+                        <%if(products && products.length>0){%>
+
+                            <%let subT=0 %>
+                                <%products.forEach(element=>{%>
+                                    <%subT= subT + element.price_without_discount%>
+                                        <%});%>
+                                            <div class="col-lg-6 col-sm-12 mb-2">
+                                                <div class="bg-warning text-dark d-flex justify-content-between p-3 rounded">
+                                                    <div><span>
+                                                            <%=products.length%> Items
+                                                        </span></div>
+                                                    <div>Subtotal:<span style="color: #FF406C;" class="sub_total sub_t">
+                                                            <%= subT%>
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-none d-flex align-items-center justify-content-around mt-2 text-dark bg-light p-2">
+                                                    <div class=" p-2" style="flex: 1;">Image</div>
+                                                    <div class=" p-2" style="flex: 1.5;">Quantity</div>
+                                                    <div class=" p-2" style="flex: 1;">Price</div>
+                                                    <div class=" p-2" style="flex: 1;">Total</div>
+                                                    <div class=" p-2" style="flex: 1;">Action</div>
+                                                </div>
+
+                                                <%products.forEach(p=>{%>
+
+                                                    <div class="mt-2 rounded" style="border: 1px solid green;" id="productcartContainer_<%=p.id%>">
+                                                        <div class="d-flex align-items-center justify-content-around mt-3">
+                                                            <div>
+                                                                <img src="<%=p.primary_image%>" class="img-fluid" alt="Not available" height="100" width="100">
+                                                                <div class="text-center">
+                                                                    Title: <%=p.name%>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <div class="d-flex justify-center md:w-1/5 " style="flex:1.5">
+                                                                    <span onclick="change_quantity_value('plus','<%=p.id%>', this )" class="px-3 py-2 font-bold border hover:border-gray-800">+
+                                                                    </span>
+                                                                    <span class="quantity-counter p-2" id="input">
+                                                                        <%=p.qty%>
+                                                                    </span>
+                                                                    <span onclick="change_quantity_value('minus','<%=p.id%>', this )" class="px-3 py-2 font-bold border hover:border-gray-800">-</span>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <h5>
+                                                                    <%=p.selling_price%> ৳
+                                                                </h5>
+                                                            </div>
+
+                                                            <div>
+                                                                <h5 id="price_without_discount_<%=p.id%>">
+                                                                    <%=p.price_without_discount%> ৳
+                                                                </h5>
+                                                            </div>
+                                                            <div>
+                                                                <div class="bd-highlight me-2 mb-2" onclick="deleteSessionProduct('<%=p.id%>')">
+                                                                    <svg class="d-none" xmlns="http://www.w3.org/2000/svg" width="20" height="50" viewBox="0 0 40 30" fill="none">
+                                                                        <path
+                                                                            d="M14.2055 1.34161H26.5678M1.84326 7.52274H38.93M34.8093 7.52274L33.3644 29.1964C33.1476 32.4482 33.0392 34.0741 32.3369 35.3069C31.7185 36.3923 30.7859 37.2649 29.6618 37.8096C28.385 38.4284 26.7555 38.4284 23.4965 38.4284H17.2768C14.0178 38.4284 12.3883 38.4284 11.1115 37.8096C9.98743 37.2649 9.05476 36.3923 8.43643 35.3069C7.73411 34.0741 7.62571 32.4482 7.40893 29.1964L5.96402 7.52274"
+                                                                            stroke="#8D8D8D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                                    </svg>
+                                                                    <i class="fas fa-times"></i>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="d-none mt-2 d-flex justify-content-between p-2 " style="border: 2px solid#FF406C;">
+                                                        <div class="d-flex align-items-center gap-3">
+                                                            <div>
+                                                                <img src="img/ribon/image 9.png" class="img-fluid" alt="">
+                                                            </div>
+                                                            <div>
+                                                                <h5>Product Name Here</h5>
+                                                                <p>Lorem ipsum dolor </p>
+                                                                <span>BDT 500</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="d-flex align-items-end flex-column bd-highlight">
+                                                            <div class="bd-highlight me-2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="0 0 40 30" fill="none">
+                                                                    <path
+                                                                        d="M14.2055 1.34161H26.5678M1.84326 7.52274H38.93M34.8093 7.52274L33.3644 29.1964C33.1476 32.4482 33.0392 34.0741 32.3369 35.3069C31.7185 36.3923 30.7859 37.2649 29.6618 37.8096C28.385 38.4284 26.7555 38.4284 23.4965 38.4284H17.2768C14.0178 38.4284 12.3883 38.4284 11.1115 37.8096C9.98743 37.2649 9.05476 36.3923 8.43643 35.3069C7.73411 34.0741 7.62571 32.4482 7.40893 29.1964L5.96402 7.52274"
+                                                                        stroke="#8D8D8D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                                </svg>
+                                                            </div>
+                                                            <div class="d-flex align-items-center mt-auto">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40" fill="none">
+                                                                    <path
+                                                                        d="M12.8936 19.9589H27.7283M38.8544 19.9589C38.8544 30.2001 30.5522 38.5023 20.311 38.5023C10.0697 38.5023 1.76758 30.2001 1.76758 19.9589C1.76758 9.71763 10.0697 1.41547 20.311 1.41547C30.5522 1.41547 38.8544 9.71763 38.8544 19.9589Z"
+                                                                        stroke="#8D8D8D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                                </svg>
+                                                                <p class="mx-3" style="margin-bottom: 0px;"> 2 </p>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 34 34" fill="none">
+                                                                    <path
+                                                                        d="M17.2946 10.7777V23.14M11.1135 16.9589H23.4758M32.7474 16.9589C32.7474 25.4932 25.829 32.4117 17.2946 32.4117C8.76026 32.4117 1.8418 25.4932 1.8418 16.9589C1.8418 8.42451 8.76026 1.50604 17.2946 1.50604C25.829 1.50604 32.7474 8.42451 32.7474 16.9589Z"
+                                                                        stroke="#8D8D8D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <%});%>
+                                            </div>
+
+                                            <style>
+                                                input {
+                                                    width: 100%;
+                                                    border: 1px solid #aaa;
+                                                    border-radius: 4px;
+                                                    /* margin: 8px 8px; */
+                                                    outline: none;
+                                                    padding: 8px;
+                                                    box-sizing: border-box;
+                                                    transition: .3s;
+                                                }
+
+                                                input[type=text]:focus {
+                                                    border-color: dodgerBlue;
+                                                    box-shadow: 0 0 8px 0 dodgerBlue;
+                                                }
+                                            </style>
+
+                                            <div class="col-lg-6 col-sm-12">
+
+                                                <div class="mb-2 p-3 text-dark" style="border: 2px solid green;">
+                                                    <h2 class="mb-4">Customer Information</h2>
+                                                    <%let user=locals.session.auth_user%>
+                                                        <%if(user){%>
+                                                            <div class="row">
+                                                                <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                                                                    <div><span>Mobile</span></div>
+                                                                    <div><input type="text" id="mobile" name="mobile" value="<%=user.mobile%>" placeholder="১১ ডিজিটের মোবাইল নাম্বারটি লিখুন।" required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                                                                    <div><span>Email</span></div>
+                                                                    <div><input type="email" id="email" value="<%=user.email%>" placeholder="xyz@gmail.com" name="email">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+
+                                                                    <div><span>Full Name</span></div>
+                                                                    <div><input type="text" id="name" name="name" value="<%=user.customer_name%>" placeholder="Dr.John"></div>
+
+                                                                </div>
+                                                                <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+
+                                                                    <div><span>Area/ Address</span></div>
+                                                                    <div><input type="text" id="address" name="address" placeholder="Dhanmondi,street-1200"></div>
+                                                                </div>
+
+                                                            </div>
+                                                            <%}%>
+
+                                                                <div class="row">
+                                                                    <div class="col-12 mb-2">
+                                                                        <div><span class="text">Select
+                                                                                Delivery</span></div>
+                                                                        <select required class="form-select" aria-label="Default select example" name="delivery" value="">
+                                                                            <option value="">Select delivery
+                                                                            </option>
+                                                                            <option value="60">ঢাকা সিটির ভিতরে
+                                                                                হোম ডেলিভারি (60Tk)</option>
+                                                                            <option value="150">ঢাকা সিটির
+                                                                                বাহিরে হোম ডেলিভারি (150Tk)
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+
+                                                </div>
+
+                                                <div class="p-3 text-dark" style="border: 2px solid green;">
+                                                    <h2 class="mb-4">Order Summary</h2>
+                                                    <div class="mb-1 d-flex justify-content-between align-items-center">
+                                                        <div><span>Subtotal : </span></div>
+
+                                                        <div><span class="sub_total">
+                                                                <%=subT%>
+                                                            </span></div>
+                                                    </div>
+                                                    <div class="mb-1 d-flex justify-content-between align-items-center">
+                                                        <div><span>Delivery Fee : </span></div>
+                                                        <div><span id="delivery_fee">0</span></div>
+                                                    </div>
+                                                    <div class="mb-1 d-flex justify-content-between align-items-center">
+                                                        <div><span>Total Amount: </span></div>
+                                                        <div><span id="total_amount">0</span></div>
+                                                    </div>
+
+                                                    <div class="mt-4">
+                                                        <button type="submit" class="btn text-light container" style="background-color: green;">Order
+                                                            Confirm</button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <%}else{%>
+                                                <div class="border fw-bold text-success text-center p-3" style="font-size: 25px;">Cart iS Empty......</div>
+                                                <%}%>
+
+                                                    <div class="d-none mt-2 d-flex justify-content-between p-2 " style="border: 2px solid#FF406C;">
+                                                        <div class="d-flex align-items-center gap-3">
+                                                            <div>
+                                                                <img src="img/ribon/image 9.png" class="img-fluid" alt="">
+                                                            </div>
+                                                            <div>
+                                                                <h5>Product Name Here</h5>
+                                                                <p>Lorem ipsum dolor </p>
+                                                                <span>BDT 500</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="d-flex align-items-end flex-column bd-highlight">
+                                                            <div class="bd-highlight me-2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="40" viewBox="0 0 40 30" fill="none">
+                                                                    <path
+                                                                        d="M14.2055 1.34161H26.5678M1.84326 7.52274H38.93M34.8093 7.52274L33.3644 29.1964C33.1476 32.4482 33.0392 34.0741 32.3369 35.3069C31.7185 36.3923 30.7859 37.2649 29.6618 37.8096C28.385 38.4284 26.7555 38.4284 23.4965 38.4284H17.2768C14.0178 38.4284 12.3883 38.4284 11.1115 37.8096C9.98743 37.2649 9.05476 36.3923 8.43643 35.3069C7.73411 34.0741 7.62571 32.4482 7.40893 29.1964L5.96402 7.52274"
+                                                                        stroke="#8D8D8D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                                </svg>
+                                                            </div>
+                                                            <div class="d-flex align-items-center mt-auto">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40" fill="none">
+                                                                    <path
+                                                                        d="M12.8936 19.9589H27.7283M38.8544 19.9589C38.8544 30.2001 30.5522 38.5023 20.311 38.5023C10.0697 38.5023 1.76758 30.2001 1.76758 19.9589C1.76758 9.71763 10.0697 1.41547 20.311 1.41547C30.5522 1.41547 38.8544 9.71763 38.8544 19.9589Z"
+                                                                        stroke="#8D8D8D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                                </svg>
+                                                                <p class="mx-3" style="margin-bottom: 0px;"> 2 </p>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 34 34" fill="none">
+                                                                    <path
+                                                                        d="M17.2946 10.7777V23.14M11.1135 16.9589H23.4758M32.7474 16.9589C32.7474 25.4932 25.829 32.4117 17.2946 32.4117C8.76026 32.4117 1.8418 25.4932 1.8418 16.9589C1.8418 8.42451 8.76026 1.50604 17.2946 1.50604C25.829 1.50604 32.7474 8.42451 32.7474 16.9589Z"
+                                                                        stroke="#8D8D8D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <!--end page content-->
+
+
+    <!--start footer-->
+    <section class="footer-section bg-section-2 section-padding d-none d-lg-block" style="background-color: #FFF6F6;">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-lg-4 g-4">
+
+                <div class="col d-flex d-md-block d-sm-flex justify-content-center">
+                    <div class="footer-widget-7">
+                        <h5 class="mb-3 fw-bold">ONLINE SHOPPING</h5>
+                        <ul class="widget-link list-unstyled">
+                            <li><a href="javascript:;">Men</a></li>
+                            <li><a href="javascript:;">Women</a></li>
+                            <li><a href="javascript:;">Kids</a></li>
+                            <li><a href="javascript:;">Home & Living</a></li>
+                            <li><a href="javascript:;">Beauty</a></li>
+                            <li><a href="javascript:;">Gift Cards</a></li>
+                            <li><a href="javascript:;">Ribbon Insider</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="f-1 col d-flex d-md-block d-sm-flex justify-content-center">
+                    <div class="footer-widget-7">
+                        <h5 class="mb-3 fw-bold">CUSTOMER POLICIES</h5>
+                        <ul class="widget-link list-unstyled">
+                            <li><a href="javascript:;">Contact Us</a></li>
+                            <li><a href="javascript:;">FAQ</a></li>
+                            <li><a href="javascript:;">T&C</a></li>
+                            <li><a href="javascript:;">Terms Of Use</a></li>
+                            <li><a href="javascript:;">Track Orders</a></li>
+                            <li><a href="javascript:;">Shipping</a></li>
+                            <li><a href="javascript:;">Cancellation</a></li>
+                            <li><a href="javascript:;">Returns</a></li>
+                            <li><a href="/privacy_policy">Privacy policy</a></li>
+                            <li><a href="/terms_condition">Terms & Condition</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="f-2 col d-flex d-md-block d-sm-flex justify-content-center">
+                    <div class="footer-widget-7">
+                        <h5 class="mb-3 fw-bold">USEFUL LINKS</h5>
+                        <ul class="widget-link list-unstyled">
+                            <li><a href="javascript:;">Blog</a>
+                            </li>
+                            <li><a href="javascript:;">Careers</a>
+                            </li>
+                            <li><a href="javascript:;">Site Map</a>
+                            </li>
+                            <li><a href="javascript:;">Corporate Information</a>
+                            </li>
+                            <li><a href="javascript:;">Whitehat</a>
+                            </li>
+                            <li><a href="javascript:;">Cleartrip</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="f-11 col d-flex d-md-block d-sm-flex justify-content-center">
+                    <div class="footer-widget-7">
+                        <h5 class="mb-3 fw-bold">Keep In Touch</h5>
+                        <ul class="widget-link list-unstyled">
+                            <li>
+                                <a href="javascript:;">
+                                    <i class="fab fa-google me-2"></i>
+                                    <i class="fab fa-facebook-f me-2"></i>
+                                    <i class="fab fa-twitter me-2"></i>
+                                    <i class="fab fa-linkedin me-2"></i>
+                                    <i class="fab fa-whatsapp me-2"></i>
+                                    <i class="fab fa-tiktok me-2"></i>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <!-- <div>
+            <img class="d-flex justify-content-center mx-auto my-0" style="width: 200px;" src="img/logo.png" alt="">
+        </div> -->
+        </div>
+    </section>
+    <!--end footer-->
+
+    <!--Start Back To Top Button-->
+    <a href="javaScript:;" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <!--End Back To Top Button-->
+
+
+    <!-- JavaScript files -->
+    <script src="../../front_assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../../front_assets/js/jquery.min.js"></script>
+    <script src="../../front_assets/plugins/slick/slick.min.js"></script>
+    <script src="../../front_assets/js/main.js"></script>
+    <script src="../../front_assets/js/loader.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../../front_assets/js/axios_post.js"></script>
+
+
+
+    <script>
+        let selectElement = document.querySelector('select[name="delivery"]');
+        let delivery_fee = document.querySelector('#delivery_fee');
+        // let sub_total = document.querySelector('#sub_total');
+        let sub_t = document.querySelector('.sub_t');
+        console.log('update Sub Total: ', sub_t.innerHTML);
+
+        selectElement.addEventListener('change', function () {
+            let selectedValue = selectElement.value;
+            delivery_fee.innerHTML = selectedValue ? selectedValue : 0;
+            let total_amount = document.querySelector('#total_amount');
+            total_amount.innerHTML = parseInt(selectedValue) + parseInt(sub_t.innerHTML);
+        });
+    </script>
+
+</body>
+
+</html>

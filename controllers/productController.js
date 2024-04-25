@@ -611,7 +611,7 @@ const cart = async (req, res) => {
                 }
             }
         ]);
-        res.render('user/cart.ejs', { parent });
+        res.render('product/cart.ejs', { parent, locals: { session: req.session } });
     }
     catch (err) {
         console.log(err);

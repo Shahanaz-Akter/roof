@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Add Seller</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+    <!-- Plugins css -->
+    <link href="/assets/libs/mohithg-switchery/switchery.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/libs/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/libs/selectize/css/selectize.bootstrap3.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- App css -->
+    <link href="/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
+
+    <!-- icons -->
+    <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<!-- body start -->
+
+<body class="loading" data-layout-color="light" data-layout-mode="default" data-layout-size="fluid" data-topbar-color="light" data-leftbar-position="fixed" data-leftbar-color="light" data-leftbar-size='default' data-sidebar-user='true'>
+
+    <!-- Begin page -->
+    <div id="wrapper">
+
+        <!-- Top bar Start -->
+        <%-include('.. /layouts/topbar.ejs')-%>
+            <!-- end Topbar -->
+
+            <!-- Left Sidebar Start ========== -->
+            <%- include('../layouts/left_sidebar.ejs') -%>
+                <!-- Left Sidebar End -->
+
+                <!-- Start Page Content here -->
+                <div class="content-page mt-5" style="background: #F9F9F9;">
+                    <div class="content">
+
+                        <div class="bg-white p-3 mb-2">
+
+                            <h4 class="text-black font-bold mb-3">Add Seller</h4>
+
+                            <div style="color: rgb(97 97 97); margin-right: 0.5rem">
+                                <span>Seller</span>
+                                <span>></span>
+                                <span>Add Seller</span>
+                            </div>
+                        </div>
+
+                        <!-- Start Content-->
+                        <div class="container-fluid card p-4">
+
+                            <h3 class="mb-3">Create Seller</h3>
+
+                            <form action="/seller/post_seller" method="post" enctype="multipart/form-data">
+
+                                <div class="row">
+                                    <!-- seller_picture -->
+
+                                    <div class="col-12 mb-3">
+                                        <label class="picture" for="seller_picture" tabIndex="0">
+                                            <span class="picture__image"><svg xmlns="http://www.w3.org/2000/svg" width="139" height="140" viewBox="0 0 139 140" fill="none">
+                                                    <path
+                                                        d="M101.467 138.817H30.9221C26.3112 138.817 24.0057 138.817 22.9381 137.905C22.0118 137.114 21.5202 135.927 21.6158 134.713C21.726 133.313 23.3562 131.683 26.6166 128.422L91.3335 63.7054C94.3475 60.6913 95.8547 59.1842 97.5925 58.6196C99.1211 58.1229 100.768 58.1229 102.296 58.6196C104.034 59.1842 105.541 60.6913 108.555 63.7054L134.251 89.401C135.635 90.7846 136.326 91.4764 136.821 92.2837C137.26 92.9995 137.583 93.7798 137.779 94.5961C138 95.5168 138 96.4952 138 98.4519V102.283M101.467 138.817C114.255 138.817 120.648 138.817 125.533 136.328C129.829 134.139 133.322 130.646 135.511 126.349C138 121.465 138 115.071 138 102.283M101.467 138.817H37.5333C24.7455 138.817 18.3515 138.817 13.4672 136.328C9.17085 134.139 5.67779 130.646 3.48868 126.349C1 121.465 1 115.071 1 102.283V38.35C1 25.5621 1 19.1682 3.48868 14.2839C5.67779 9.9875 9.17085 6.49444 13.4672 4.30533C18.3515 1.81665 24.7455 1.81665 37.5333 1.81665H101.467C114.255 1.81665 120.648 1.81665 125.533 4.30533C129.829 6.49444 133.322 9.9875 135.511 14.2839C138 19.1682 138 25.5621 138 38.35V102.283M58.0833 43.6778C58.0833 52.0848 51.2681 58.9 42.8611 58.9C34.4541 58.9 27.6389 52.0848 27.6389 43.6778C27.6389 35.2708 34.4541 28.4555 42.8611 28.4555C51.2681 28.4555 58.0833 35.2708 58.0833 43.6778Z"
+                                                        stroke="#464748" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </span>
+                                        </label>
+
+                                        <input type="file" name="seller_picture" id="seller_picture" />
+                                    </div>
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="seller_user_name" class="form-label">Seller Name</label>
+                                        <input class="form-control" id="seller_user_name" type="text" name="seller_user_name" placeholder="Seller Name">
+                                    </div>
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="phone" class="form-label">Phone</label>
+                                        <input class="form-control" id="phone" type="text" name="phone" placeholder="01*********">
+                                    </div>
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="store_name" class="form-label">Store Name</label>
+                                        <input class="form-control" id="store_name" type="text" name="store_name" placeholder="Store Name">
+                                    </div>
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="business_type" class="form-label">Business Type</label>
+                                        <input class="form-control" id="business_type" type="text" name="business_type" placeholder="Business Type">
+                                    </div>
+
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3">
+                                        <label for="address" class="form-label">Address</label>
+                                        <input class="form-control" id="address" type="text" name="address" placeholder="Address">
+                                    </div>
+
+                                    <style>
+                                        .select2-container--default .select2-selection--single {
+                                            background: #FCFCFC !important;
+                                            color: #444 !important;
+                                        }
+
+                                        .form-control {
+                                            background: #FCFCFC !important;
+                                            color: #444 !important;
+                                        }
+                                    </style>
+
+                                    <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                        <button type="submit" class="btn btn-lg btn-primary">Create Seller</button>
+                                    </div>
+
+                                </div>
+
+                            </form>
+
+                        </div>
+                        <!-- container-fluid -->
+
+                    </div> <!-- content -->
+
+                    <!-- Footer Start -->
+                    <%- include('../layouts/footer.ejs') -%>
+                        <!-- end Footer -->
+
+                </div>
+
+
+                <!-- End Page content -->
+
+
+    </div>
+    <!-- END wrapper -->
+
+    <!-- Right Sidebar -->
+    <%- include('../layouts/right_sidebar.ejs') -%>
+        <!-- /Right-bar -->
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- Vendor -->
+        <script src="/assets/libs/jquery/jquery.min.js"></script>
+        <script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="/assets/libs/node-waves/waves.min.js"></script>
+        <script src="/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+        <script src="/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+        <script src="/assets/libs/feather-icons/feather.min.js"></script>
+
+        <script src="/assets/libs/selectize/js/standalone/selectize.min.js"></script>
+        <script src="/assets/libs/mohithg-switchery/switchery.min.js"></script>
+        <script src="/assets/libs/multiselect/js/jquery.multi-select.js"></script>
+        <script src="/assets/libs/select2/js/select2.min.js"></script>
+        <script src="/assets/libs/jquery-mockjax/jquery.mockjax.min.js"></script>
+        <script src="/assets/libs/devbridge-autocomplete/jquery.autocomplete.min.js"></script>
+        <script src="/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+        <script src="https://coderthemes.com/adminto/layouts//assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+
+        <!-- Init js-->
+        <script src="/assets/js/pages/form-advanced.init.js"></script>
+
+        <!-- App js -->
+        <script src="/assets/js/app.min.js"></script>
+
+        <!-- date setup in min attributes -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
+
+        <script>
+            // Set the timezone to Bangladesh
+            moment.tz.setDefault("Asia/Dhaka");
+            // Get the current date in "YYYY-MM-DD" format
+            var currentDate = moment().format("YYYY-MM-DD");
+            console.log('currentDate', currentDate);
+            // Set the min attribute of the date input
+            document.getElementById("date").min = currentDate;
+        </script>
+
+
+        <!-- add seller preview image -->
+        <script>
+            const inputFile = document.querySelector("#seller_picture");
+            const pictureImage = document.querySelector(".picture__image");
+
+            inputFile.addEventListener("change", function (e) {
+                const inputTarget = e.target;
+                const file = inputTarget.files[0];
+
+                if (file) {
+                    const reader = new FileReader();
+
+                    reader.addEventListener("load", function (e) {
+                        const readerTarget = e.target;
+
+                        const img = document.createElement("img");
+                        img.src = readerTarget.result;
+                        img.classList.add("picture__img");
+
+                        pictureImage.innerHTML = "";
+                        pictureImage.appendChild(img);
+                    });
+
+                    reader.readAsDataURL(file);
+                } else {
+                    pictureImage.innerHTML = pictureImageTxt;
+                }
+            });
+        </script>
+</body>
+
+</html>

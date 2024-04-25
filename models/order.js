@@ -13,12 +13,12 @@ const orderSchema = new mongoose.Schema({
         unique: false
     },
     delivery_charge: {
-        type: Integer,
+        type: Number,
         required: true,
         unique: false
     },
     products: {
-        type: [String],
+        type: [],
         required: true,
 
     },
