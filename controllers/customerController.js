@@ -389,7 +389,7 @@ const productIncDec = async (req, res) => {
     })
 }
 
-const postOrder = async (req, res) => {
+const postOrder1 = async (req, res) => {
     console.log('post Order');
     let subT = 0;
     let { address, delivery } = req.body;
@@ -397,7 +397,7 @@ const postOrder = async (req, res) => {
     console.log('Delivery: ', delivery);
 
     let session_products_list = req.session.products;
-    console.log("Session Array: ", session_products_list);
+    // console.log("Session Array: ", session_products_list);
 
     session_products_list.forEach(ele => {
         subT = subT + ele.price_without_discount;
@@ -441,7 +441,58 @@ const postOrder = async (req, res) => {
         console.log(e.message);
     }
 }
+const postOrder = async (req, res) => {
+    console.log('post Order');
+    let subT = 0;
+    let { address, delivery, mobile } = req.body;
+    console.log('Address: ', address);
+    console.log('Delivery: ', delivery);
+    let session_products_list = req.session.products;
+    // console.log(session_products_list);
 
+    session_products_list.forEach(ele => {
+        subT = subT + ele.price_without_discount;
+    });
+
+    try {
+        let order = await Order.create({
+            mobile: mobile,
+            address: address,
+            delivery_charge: parseInt(delivery),
+            products: session_products_list,
+            sub_total: subT,
+            total_amount: parseInt(delivery) + subT
+        });
+
+
+        //each seller order will be stored in the seller_id table from the session session_products_list array
+        session_products_list.forEach(async (pr) => {
+            if (pr.seller_id != null) {
+                let seller_order = await sellerOrder.create({
+                    seller_id: pr.seller_id,
+                    product_id: pr._id,
+                    order_id: order._id,
+                    qty: pr.qty,
+                    primary_image: pr.primary_image,
+                    actual_price: pr.actual_price,
+                    name: pr.name,
+                    discount: pr.discount,
+                    customer_id: req.session.auth_user._id
+                });
+            }
+
+        });
+
+        if (order) {
+            req.session.products = [];
+            res.redirect('/');
+
+        }
+    }
+    catch (e) {
+        console.log(e.message);
+    }
+}
 
 const ses = (req, res) => {
     console.log(req.session.auth_user);

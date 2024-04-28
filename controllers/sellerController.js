@@ -9,6 +9,7 @@ const Seller = require('../models/seller');
 const sellerOrder = require('../models/sellerorder');
 let requests = require('request');
 
+
 const addSeller1 = async (req, res) => {
     let err = req.query.error;
     res.render('seller/add_seller.ejs', { err });
@@ -199,6 +200,7 @@ const postProductUpload = async (req, res) => {
     // console.log('sec_img :', sec_img);
     //latest parent categories uopc code
     const latestCategory = await parentCategory.findOne({}).sort({ createdAt: -1 });
+
     let latest_upc_code = parseInt(latestCategory.upc_code);
     // latest_upc_code = isNaN(latest_upc_code) ? 0 : latest_upc_code;
     latest_upc_code++;
@@ -207,6 +209,7 @@ const postProductUpload = async (req, res) => {
 
     let timestamp = Date.now().toString(); // Get the current timestamp as a string
     let sku_code = upc_code + timestamp;
+
 
     let p = {
         'seller_id': req.session.sellerId,
@@ -238,7 +241,8 @@ const postProductUpload = async (req, res) => {
 
     }
     let record = await Product.create(p);
-    console.log(record);
+    // console.log(record);
+
     if (record) {
         let product_list = await Product.find({ seller_id: req.session.sellerId });
         // console.log(req.session.sellerId);

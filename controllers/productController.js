@@ -421,6 +421,7 @@ const postAddProduct = async (req, res) => {
             'colorVariants': colorVariants ? colorVariants : null,
             'sizeVariants': sizeVariants ? sizeVariants : null,
             'product_code': Math.floor(Math.random() * 1000) + 1,
+            'status': 'approved'
         }
 
         // console.log(result);
