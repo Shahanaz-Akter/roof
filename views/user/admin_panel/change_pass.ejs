@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Change Password</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+
+    <!-- App css -->
+
+    <link href="../../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
+
+    <!-- icons -->
+    <link href="../../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+
+
+
+    <!-- view pass css -->
+    <style>
+        * {
+
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;1,400&display=swap');
+            font-family: 'Poppins', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .login-page {
+            width: 100vw;
+            height: 100vh;
+            display: inline-block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('/assets/images/auth/bg.png');
+            background-size: cover;
+            background-position: left center;
+        }
+
+        .logo img {
+
+            width: auto;
+
+        }
+
+        input {
+            width: 95%;
+            border-radius: 4px;
+            outline: none;
+            padding: 8px;
+            margin: 8px 0;
+            font-size: 17px;
+            color: gray;
+            border: none;
+            background-color: #F5F5F5;
+        }
+
+        .fa {
+
+            font-size: 17px;
+            margin-left: -31px;
+            color: gray;
+        }
+
+        input[type="password"]:focus {
+            border-color: dodgerBlue;
+            box-shadow: 0 0 8px 0 dodgerBlue;
+
+        }
+
+        input[type='password']::placeholder {
+            color: #808080 !important;
+        }
+
+        .inputWithIcon input[type="text"] {
+            padding-left: 10px;
+        }
+
+        .inputWithIcon {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+
+        .inputWithIcon input[type="text"]:focus+i {
+            color: dodgerBlue;
+        }
+
+        .inputWithIcon.inputIconBg i {
+            background-color: #aaa;
+            color: #fff;
+            padding: 9px 4px;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .inputWithIcon.inputIconBg input[type="text"]:focus+i {
+            color: #fff;
+            background-color: dodgerBlue;
+        }
+
+        .login-with img {
+            width: 20px;
+            height: auto;
+
+        }
+
+        .login-with {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+
+        }
+
+        .icon-holder {
+
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-flex;
+            justify-content: center;
+            box-shadow: inset 0 0 10px #EEEEEF;
+            border: 2px solid #EEEEEF;
+            align-items: center;
+        }
+
+        .button {
+            text-align: center;
+            display: inline-block;
+            outline: none !important;
+            width: 50%;
+            padding: 1em 3em;
+            border-radius: 0.5em;
+            /* background: linear-gradient(to right, #56b8dd, #6e80e6, #8467e7, #b444ee, #e639f7, #c63bf0); */
+            background: #2B313C;
+            color: white;
+            font-size: 14px;
+            border: none;
+
+        }
+
+        form input::placeholder {
+            font-size: 15px;
+            color: #999999;
+        }
+
+        ::placeholder {
+            color: black !important;
+        }
+    </style>
+</head>
+
+<body class="loading authentication-bg authentication-bg-pattern">
+
+    <div class="account-pages my-5">
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-4">
+                    <div class="text-center">
+                        <a href="index.html">
+                            <img src="../../assets/images/logo-sm.png" alt="" height="22" class="mx-auto">
+                        </a>
+                        <p class="text-muted mt-2 mb-4">Responsive Admin Dashboard</p>
+
+                    </div>
+                    <div class="card">
+                        <div class="card-body p-4">
+
+
+
+                            <form action="/auth/post_change_password/<%=id%>" method="post">
+
+
+                                <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 d-flex justify-content-center flex-column">
+                                    <div class="header mb-3">
+                                        <div class=" fs-2 text-center">Set New Password</div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <!-- <div class="my-3"> -->
+                                        <label for="password" class=""><b>Password</b> </label>
+
+                                        <div class="first-example">
+                                            <input type="password" id="password-field" placeholder="**********" name="password" style="" required>
+                                            <i id="pass-status" class="fa fa-eye-slash" aria-hidden="true" onClick="viewPassword()"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <!-- <div class="my-3"> -->
+                                        <label for="confirm_pin" class=""> <b> Confirm Password</b></label>
+                                        <div class="first-example">
+                                            <input type="password" id="password-field1" placeholder="**********" name="confirm_password" required>
+                                            <i id="pass-status1" class="fa fa-eye-slash" aria-hidden="true" onClick="viewPassword1()"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="btn-link mt-4 text-center">
+                                        <button type="submit" class="button mb-4" href="">Continue</button>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end page -->
+
+    <!-- Vendor -->
+    <script src="../../assets/libs/jquery/jquery.min.js"></script>
+    <script src="../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="../../assets/libs/node-waves/waves.min.js"></script>
+    <script src="../../assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="../../assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+    <script src="../../assets/libs/feather-icons/feather.min.js"></script>
+
+    <!-- App js -->
+    <script src="../../assets/js/app.min.js"></script>
+
+
+
+    <!-- view pass js -->
+    <script>
+        function viewPassword() {
+            var passwordInput = document.getElementById('password-field');
+            var passStatus = document.getElementById('pass-status');
+
+            if (passwordInput.type == 'password') {
+                passwordInput.type = 'text';
+                passStatus.className = passStatus.className.replace('fa-eye-slash', 'fa-eye');
+
+
+            } else {
+                passwordInput.type = 'password';
+                passStatus.className = 'fa fa-eye-slash';
+            }
+        }
+
+        function viewPassword1() {
+            var passwordInput = document.getElementById('password-field1');
+            var passStatus = document.getElementById('pass-status1');
+
+            if (passwordInput.type == 'password') {
+                passwordInput.type = 'text';
+                passStatus.className = 'fa fa-eye';
+
+            } else {
+                passwordInput.type = 'password';
+                passStatus.className = 'fa fa-eye-slash ';
+            }
+        }
+    </script>
+</body>
+
+</html>

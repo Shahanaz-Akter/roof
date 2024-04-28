@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Login / Sign in</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+  <meta content="Coderthemes" name="author" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- App favicon -->
+  <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+
+  <!-- App css -->
+
+  <link href="../../assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
+
+  <!-- icons -->
+  <link href="../../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body class="loading authentication-bg authentication-bg-pattern">
+
+
+  <div class="account-pages my-5">
+    <div class="container">
+
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-4">
+          <div class="text-center">
+            <a href="index.html">
+              <img src="../../assets/images/logo-sm.png" alt="" height="22" class="mx-auto">
+            </a>
+            <p class="text-muted mt-2 mb-4">Responsive Admin Dashboard</p>
+
+          </div>
+          <div class="card">
+            <div class="card-body p-4">
+
+              <div class="text-center mb-4">
+                <h4 class="text-uppercase mt-0">Sign In</h4>
+              </div>
+
+              <form action="/auth/post_login" method="post">
+
+
+                <% if (error) { %>
+                  <div class="alert-danger border text-center text-dark p-2">
+                    <%= error %>
+                  </div>
+                  <% } %>
+
+                    <div class="mb-3 mt-2">
+                      <label for="email" class="form-label">Email</label>
+                      <input class="form-control" type="email" id="email" placeholder="John@gmail.com" name="email">
+                    </div>
+
+
+                    <div class="mb-3">
+                      <label for="password" class="form-label">Password</label>
+                      <input class="form-control" type="password" required="" id="password" placeholder="Enter your password" name="password" required>
+                    </div>
+
+
+
+                    <div class="mb-3 d-grid text-center">
+                      <button class="btn btn-dark" type="submit"> Log In </button>
+                    </div>
+              </form>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!-- end card -->
+
+          <div class="row mt-3 text-dark">
+            <div class="col-12 text-center">
+              <p> <a class="text-dark fw-bold ms-1" data-bs-toggle="modal" data-bs-target="#forget_password"><i class="fa fa-lock me-1"></i>Forgot your password?</a></p>
+              <p class="text-dark fw-bold">Don't have an account? <a href="/auth/register" class="text-dark ms-1"><b>Sign Up</b></a></p>
+            </div> <!-- end col -->
+          </div>
+          <!-- end row -->
+
+
+
+          <!-- forget password modal -->
+          <div class="modal fade" id="forget_password" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-md">
+              <div class="modal-content">
+                <div class="modal-header">
+
+                  <h4 class="modal-title" id="myCenterModalLabel">Provide Your Valid Email!</h4>
+
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form action="/auth/post_forget_password" method="post">
+                    <div class="row">
+                      <style>
+                        .select2-container--default .select2-selection--single {
+                          background: #FCFCFC !important;
+                          color: #444 !important;
+                        }
+
+                        .form-control {
+                          background: #FCFCFC !important;
+                          color: #444 !important;
+                        }
+                      </style>
+                      <%if(err){ %>
+                        <div class="alert-danger border text-center text-dark p-1">
+                          <%= err %>
+                        </div>
+                        <%}%>
+                          <div class="col-12 col-md-12 col-lg-12 col-xl-12 mb-3 mt-2">
+                            <label for="email" class="form-label">Email</label>
+                            <input class="form-control" type="email" id="email" placeholder="John@gmail.com" name="email">
+                          </div>
+
+                          <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                            <button type="submit" class="btn btn-primary" style="border-radius: 5px;">Reset</button>
+                          </div>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- password Change modal -->
+          <div class="modal fade" id="change_password" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-md">
+              <div class="modal-content">
+                <div class="modal-header">
+
+                  <h4 class="modal-title" id="myCenterModalLabel">Provide Your New Password!</h4>
+
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form class="row align-items-center" action="/post_password" method="post">
+
+                    <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 d-flex justify-content-center flex-column">
+                      <div class="header mb-3">
+                        <h2><b>Password Generate</b></h2>
+                      </div>
+
+                      <div class="row mb-3">
+                        <!-- <div class="my-3"> -->
+                        <label for="pin" class=""><b>Pin</b> </label>
+
+                        <div class="first-example">
+                          <input type="password" id="password-field" placeholder="**********" name="new_pin" style="" required>
+                          <i id="pass-status" class="fa fa-eye-slash" aria-hidden="true" onClick="viewPassword()"></i>
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <!-- <div class="my-3"> -->
+                        <label for="confirm_pin" class=""> <b> Confirm Pin</b></label>
+                        <div class="first-example">
+                          <input type="password" id="password-field1" placeholder="**********" name="confirm_pin" required>
+                          <i id="pass-status1" class="fa fa-eye-slash" aria-hidden="true" onClick="viewPassword1()"></i>
+                        </div>
+                      </div>
+
+                      <div class="btn-link mt-4 text-center">
+                        <button class="button mb-4" href="">Continue</button>
+                      </div>
+
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div> <!-- end col -->
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- end container -->
+  </div>
+  <!-- end page -->
+
+  <!-- Vendor -->
+  <script src="../../assets/libs/jquery/jquery.min.js"></script>
+  <script src="../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/libs/simplebar/simplebar.min.js"></script>
+  <script src="../../assets/libs/node-waves/waves.min.js"></script>
+  <script src="../../assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+  <script src="../../assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+  <script src="../../assets/libs/feather-icons/feather.min.js"></script>
+
+  <!-- App js -->
+  <script src="../../assets/js/app.min.js"></script>
+
+</body>
+
+</html>
